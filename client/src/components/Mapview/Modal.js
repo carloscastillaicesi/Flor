@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { SettingContext } from "../contexts/SettingContext";
+import { SettingContext } from "../../contexts/SettingContext";
 
 function Modal() {
 

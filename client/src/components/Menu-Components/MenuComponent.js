@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useHistory, Route } from "react-router-dom";
 import florLogo from "../../assets/flor-logo-topbar-menu.png";
-import Modal from "../Modal";
+import Modal from "../Mapview/Modal";
 import Exchange from "./MenuExchange";
 import Library from "./MenuLibrary";
 import MenuFirst from "./MenuFirst";

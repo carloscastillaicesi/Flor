@@ -1,7 +1,7 @@
 import React from 'react'
 import { Marker } from "react-leaflet";
 import { Icon } from "./Icon";
-import { MarkerPopup } from "./MarkerPopup";
+
 
 const MarkerComponent = (props) => {
  const { locations } = props;

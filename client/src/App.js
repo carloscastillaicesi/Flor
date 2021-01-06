@@ -9,7 +9,7 @@ import DocumentContext from "./contexts/DocumentContext";
 import BarterContext from "./contexts/BarterContext";
 import UserInfoContext from "./contexts/UserInfoContext";
 import LocationContext from "./contexts/LocationContext";
-import MapView from './components/MapView';
+import MapView from './components/Mapview/MapView';
 import MenuComponent from "./components/Menu-Components/MenuComponent";
 import { QueryClient, QueryClientProvider } from 'react-query'
 

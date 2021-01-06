@@ -1,19 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
-import errorI from "../assets/usernotfound.png";
-import Modal from "../components/Modal";
-import Peek from "../components/Profile-Components/Peek";
-import Gallery from '../components/Profile-Components/Gallery';
-import Documents from '../components/Profile-Components/Documents';
-import Exchange from "../components/Profile-Components/Exchange";
-import Plants from "../components/Profile-Components/Plants";
-import Detailed from "./Profile-Components/Detailed/Detailed";
-import UserInfo from "../components/Profile-Components/UserInfo";
-import Badge from "./Profile-Components/Badge";
-import TopProfileBar from "./Profile-Components/TopProfileBar";
-import { SettingContext } from "../contexts/SettingContext";
-import { DocumentContext } from "../contexts/DocumentContext";
-import { BarterContext } from "../contexts/BarterContext";
-import { UserInfoContext } from "../contexts/UserInfoContext";
+import errorI from "../../assets/usernotfound.png";
+import Modal from "./Modal";
+import Peek from "../Profile-Components/Peek";
+import Gallery from '../Profile-Components/Gallery';
+import Documents from '../Profile-Components/Documents';
+import Exchange from "../Profile-Components/Exchange";
+import Plants from "../Profile-Components/Plants";
+import Detailed from "../Profile-Components/Detailed/Detailed";
+import UserInfo from "../Profile-Components/UserInfo";
+import Badge from "../Profile-Components/Badge";
+import TopProfileBar from "../Profile-Components/TopProfileBar";
+import { SettingContext } from "../../contexts/SettingContext";
+import { DocumentContext } from "../../contexts/DocumentContext";
+import { BarterContext } from "../../contexts/BarterContext";
+import { UserInfoContext } from "../../contexts/UserInfoContext";
 import { Route, useHistory, useLocation } from "react-router-dom";
 import * as ReactLeaflet from "react-leaflet";
 const { Popup } = ReactLeaflet;
@@ -84,6 +84,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
   }
 
   return (
+
     <Popup autoPan={false} closeButton={false} onClose={handleClose.bind(this)} onOpen={handleOpen.bind(this)} className={open ? "" : "popup"}>
 
       { modal ? <Modal /> : ""}
