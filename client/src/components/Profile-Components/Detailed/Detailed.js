@@ -28,10 +28,8 @@ export default function Detailed({ pic, user, name }) {
      } titulo={"¿Cuánto tiempo le dedicas a tu huerta?"} />
      <Information icon={conocimientoI} imagen={null} info={conocimiento} titulo={"Conocimiento"} />
      <Information icon={experienciaI} imagen={null} info={tiempoExperiencia} titulo={"Experiencia"} />
-     <Information icon={expectativaI} imagen={null} info={expectativaHuerta
-     } titulo={"¿Qué beneficios buscas para tu salud?"} />
-     <Information icon={expectativaI} imagen={null} info={beneficiosSalud
-     } titulo={"Expectativa"} />
+     <Information icon={expectativaI} imagen={null} info={beneficiosSalud} titulo={"¿Qué beneficios buscas para tu salud?"} />
+     <Information icon={expectativaI} imagen={null} info={expectativaHuerta} titulo={"Expectativa"} />
 
     </div>
    </div>

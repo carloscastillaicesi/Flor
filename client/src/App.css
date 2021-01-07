@@ -9,7 +9,7 @@
   --color-secondary: #263238;
   --color-lines: #c4c4c4;
   --color-terciary: #ede221;
-  --height-profile-component: 540px;
+  --height-profile-component: 537px;
   --width-profile-component: 320px;
   --width-menu-component: 275px;
 }
@@ -18,16 +18,9 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
-}
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   font-family: "Lato", sans-serif;
 }
+
 h1 {
   font-size: 1.5em;
 }
@@ -46,6 +39,15 @@ h5 {
 h6 {
   font-size: 0.8em;
   font-weight: 400;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", sans-serif;
 }
 
 a {
@@ -513,19 +515,19 @@ input[type="tel"]:focus {
   background: -moz-linear-gradient(
     top,
     #00cf88 0%,
-    #00cf88 30%,
+    #00cf88 40%,
     #ffffff 30%
   ); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
     #00cf88 0%,
-    #00cf88 30%,
+    #00cf88 40%,
     #ffffff 30%
   ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
     #00cf88 0%,
-    #00cf88 30%,
+    #00cf88 40%,
     #ffffff 30%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cf88', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
@@ -566,7 +568,7 @@ input[type="tel"]:focus {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.component-detailed .single-action img {
+.component-detailed .single-action-icon {
   width: 14px;
   height: 18px;
 }
@@ -606,27 +608,69 @@ input[type="tel"]:focus {
 }
 
 .modal {
-  height: 101.5%;
-  width: 103.2%;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(2px);
+  height: 100%;
+  width: 100%;
   z-index: 5;
+  position: absolute;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.modal-close {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  border-radius: 20px 20px 20px 20px;
+  pointer-events: none;
+}
+
+.modal-center {
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  position: absolute;
+  border-radius: 20px 20px 20px 20px;
+  backdrop-filter: blur(2px);
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal-center-close {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
   border-radius: 20px 20px 20px 20px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }
 
 .modal-content {
-  width: 250px;
-  height: 150px;
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  padding: 10px;
+  margin-top: initial;
+  transition: opacity 0.1s linear, margin-top 0.2s linear;
+}
+
+.modal-content-close {
+  opacity: 0;
+  background-color: white;
+  margin-top: -5px !important;
+  z-index: -1;
+  box-shadow: 0px;
+  border-radius: 5px;
+  box-shadow: 0px;
+  transition: opacity 0.1s linear, margin-top 0.2s linear;
 }
 
 .modal-buttons {
@@ -634,7 +678,7 @@ input[type="tel"]:focus {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  margin: 20px 0;
+  padding-top: 10px;
 }
 .modal-buttons div {
   width: 45%;
@@ -651,6 +695,27 @@ input[type="tel"]:focus {
 
 .modal-button-red {
   background-color: #ff4949;
+}
+
+.menu-modal-container {
+}
+
+.menu-modal-option {
+  padding: 10px 2px;
+  cursor: pointer;
+  border-bottom: 1px var(--color-lines) solid;
+  font-weight: bold;
+  background-color: white;
+  transition: background-color 0.2s ease-out;
+}
+
+.menu-modal-option:active {
+  padding: 10px 2px;
+  cursor: pointer;
+  border-bottom: 1px var(--color-lines) solid;
+  font-weight: bold;
+  background-color: var(--color-lines);
+  transition: background-color 0.2s ease-out;
 }
 
 /*<--------Modal for Picked items---------->*/
@@ -1023,7 +1088,10 @@ input[type="tel"]:focus {
 .about-me {
   margin: 8px 0;
   background-color: white;
-  padding: 10px 0 10px 15px;
+  padding: 10px 20px 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -1207,20 +1275,19 @@ input[type="tel"]:focus {
 
 /*COMPONENT EXCLUSIVE STYLES: Detailed*/
 
-.information-component .single-action img {
-  width: 15px;
-  height: 15px;
-  margin: 10px 20px 0px 0px;
-}
-
-.information-component .single-action .gallery-wrapper img {
+.action-container-gallery-wrapper {
+  display: flex;
   width: 250px;
-  height: 250px;
+  height: 200px;
+  margin-bottom: 15px;
+}
+.action-container-gallery-wrapper img {
+  width: 250px;
+  height: 200px;
   object-fit: cover;
-
   border-radius: 3px;
   background-image: url(./assets/defaultgallery.png);
-  background-size: 100px;
+  background-repeat: no-repeat;
 }
 
 .action-info {

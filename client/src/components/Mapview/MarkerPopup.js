@@ -87,7 +87,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
     <Popup autoPan={false} closeButton={false} onClose={handleClose.bind(this)} onOpen={handleOpen.bind(this)} className={open ? "" : "popup"}>
 
-      { modal ? <Modal /> : ""}
+      <Modal />
 
       {pickedUser && pickedUserBarters && pickedUserDocuments ?
         <div>

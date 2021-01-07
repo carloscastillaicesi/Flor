@@ -6,7 +6,7 @@ import { SettingContext } from "../../contexts/SettingContext";
 function TopProfileBar({ setOpen, setPage }) {
   const history = useHistory();
   let location = useLocation();
-  const { toggleModal } = useContext(SettingContext);
+  const { toggleModal, setMessage, setmodalType } = useContext(SettingContext);
 
   function goBack() {
 
@@ -27,7 +27,7 @@ function TopProfileBar({ setOpen, setPage }) {
         <div class="arrow" />
       </div>
       <h3>Sembrando Vida</h3>
-      <div className="button-menu" onClick={toggleModal.bind()} />
+      <div className="button-menu" onClick={() => { setMessage(1); toggleModal(); setmodalType(0) }} />
     </div>
   )
 };

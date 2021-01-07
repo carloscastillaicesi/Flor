@@ -37,7 +37,7 @@ const HomeUsers = () => {
           lng: position.coords.longitude,
           lat: position.coords.latitude
         });
-        setCurrentUserLocalStorage();
+
         setTimeout(() => {
           history.push({
             pathname: "/map",
@@ -80,7 +80,12 @@ const HomeUsers = () => {
           <img src={florInicial} alt="" />
           <br />
           <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
-          <div onClick={getGeo.bind()} className="option-button">Activar Geolocalización</div>
+          <div onClick={() => {
+            getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
+              history.push("/map")
+            }, 1000);
+          }} className="option-button">Activar Geolocalización</div>
+
         </div >}
 
     </div >

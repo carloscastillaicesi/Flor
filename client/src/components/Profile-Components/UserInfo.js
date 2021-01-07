@@ -38,8 +38,11 @@ function UserInfo({ user, pic, name, level }) {
 
       <Link to="/map/aboutme/detail">
         <div className="about-me">
-          <div ><h4>Acerca de Mí</h4></div>
-          <div >Conoce más sobre  {name.split(" ")[0]}</div>
+          <div>
+            <h4><strong>Acerca de Mí</strong></h4>
+            <h5>Conoce más sobre {name.split(" ")[0]}</h5>
+          </div>
+          <div className="arrow-gallery right" />
         </div>
       </Link>
       <Link to="/map/aboutme/gallery">

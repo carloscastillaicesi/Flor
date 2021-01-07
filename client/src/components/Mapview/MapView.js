@@ -62,7 +62,6 @@ const MapView = () => {
 
     setModal(false);
 
-    console.log("params", userId)
 
     if (userId && userId !== "aboutme") {
       if (locations) {
@@ -176,13 +175,15 @@ const MapView = () => {
               <div className="mapview-container">
                 {options === "map"
                   ? ""
-                  : <AllUsers allUsersToggle={allUsersToggle} name={name} pic={name} data={data} pickedUser={pickedUser} setpickedUser={setpickedUser} centerMapViewUser={centerMapViewUser} setOpen={setOpen} setOptions={setOptions} geometry={geometry}></AllUsers>}
+                  : <AllUsers allUsersToggle={allUsersToggle} name={name} pic={pic} data={data} pickedUser={pickedUser} setpickedUser={setpickedUser} centerMapViewUser={centerMapViewUser} setOpen={setOpen} setOptions={setOptions} geometry={geometry}></AllUsers>}
 
                 {open
                   ?
                   <MapUI name={name} pic={pic} fullScreenMode={fullScreenMode} mapUrl={mapUrl} changeMap={changeMap} handle={handle} toggleFullscreen={toggleFullscreen} centerMapViewMe={centerMapViewMe} allUsersToggle={allUsersToggle} setpickedUser={setpickedUser} ></MapUI>
                   :
                   ''}
+
+
 
                 <Map ref={mapRef}
                   center={current}
