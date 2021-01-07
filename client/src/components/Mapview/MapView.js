@@ -46,6 +46,7 @@ const MapView = () => {
   const [posActual, setposActual] = useState(false);
 
   const { fullScreenMode, toggleFullscreen, setModal } = useContext(SettingContext);
+
   const { locations } = useContext(LocationContext);
 
   const location = useLocation();
@@ -59,24 +60,12 @@ const MapView = () => {
   const handle = useFullScreenHandle();
 
   useEffect(() => {
-
     setModal(false);
-
-
     if (userId && userId !== "aboutme") {
       if (locations) {
-        var result = [];
-        locations.forEach(function (o) { if (o['_id'] === userId) result.push(o); });
-        if (result) {
-          //geomtry here is a number, and in the other context object is something else 
-          setpickedUser([result[0].geometry[0].toString(), result[0].geometry[1].toString()]);
-          setTimeout(() => {
-            history.push("/map");
-          }, 500);
-        }
+        centerMapViewUserParams(userId);
       }
     }
-
     if (location) {
       if (location.state !== undefined) {
         if (location.state.latitude && location.state.longitude) {
@@ -84,7 +73,7 @@ const MapView = () => {
             lat: location.state.latitude,
             lng: location.state.longitude,
           };
-          setCurrentLocation(currentLocation);
+          setCurrentLocationFunction(currentLocation);
           history.replace({
             pathname: "/map",
             state: {},
@@ -92,8 +81,21 @@ const MapView = () => {
         }
       }
     }
-  }, [location, history, setModal, pickedUser, userId, isLoading, locations, setCurrentLocation]);
+  }, [location, history, setModal, pickedUser, userId, isLoading, locations]);
 
+
+  function centerMapViewUserParams(userId) {
+    setpickedUser(userId);
+    centerMapViewUser();
+    setTimeout(() => {
+      history.push("/map");
+    }, 10);
+
+  }
+
+  function setCurrentLocationFunction(currentLocation) {
+    setCurrentLocation(currentLocation);
+  }
 
   function centerMapView(e) {
     const { leafletElement } = mapRef.current;
@@ -107,7 +109,8 @@ const MapView = () => {
   function centerMapViewUser() {
     const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
-      let latlng = { lat: pickedUser[0], lng: pickedUser[1] }
+      var user = locations.filter((o) => o['_id'] === pickedUser)[0];
+      let latlng = { lat: user.geometry[0], lng: user.geometry[1] }
       leafletElement.setView(latlng, 16);
       const point = leafletElement.project(latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
@@ -162,7 +165,7 @@ const MapView = () => {
   }
 
   return (
-    <div>
+    <div className="component-mapview">
       {isError ? "Se ha producido un error inesperado. Recarga la página" :
         <div>
           {isLoading ?
@@ -175,11 +178,11 @@ const MapView = () => {
               <div className="mapview-container">
                 {options === "map"
                   ? ""
-                  : <AllUsers allUsersToggle={allUsersToggle} name={name} pic={pic} data={data} pickedUser={pickedUser} setpickedUser={setpickedUser} centerMapViewUser={centerMapViewUser} setOpen={setOpen} setOptions={setOptions} geometry={geometry}></AllUsers>}
+                  : <AllUsers allUsersToggle={allUsersToggle} name={name} pic={pic} data={data} pickedUser={pickedUser} setpickedUser={setpickedUser} centerMapViewUser={centerMapViewUser} setOpen={setOpen} setOptions={setOptions} id={_id}></AllUsers>}
 
                 {open
                   ?
-                  <MapUI name={name} pic={pic} fullScreenMode={fullScreenMode} mapUrl={mapUrl} changeMap={changeMap} handle={handle} toggleFullscreen={toggleFullscreen} centerMapViewMe={centerMapViewMe} allUsersToggle={allUsersToggle} setpickedUser={setpickedUser} ></MapUI>
+                  <MapUI name={name} pic={pic} id={_id} fullScreenMode={fullScreenMode} mapUrl={mapUrl} changeMap={changeMap} handle={handle} toggleFullscreen={toggleFullscreen} centerMapViewMe={centerMapViewMe} allUsersToggle={allUsersToggle} setpickedUser={setpickedUser} ></MapUI>
                   :
                   ''}
 
@@ -229,8 +232,8 @@ const MapView = () => {
                     <Marker key={i}
                       position={data.geometry}
                       icon={data.level === 1 ? Icon : data.level === 2 ? IconTwo : data.level === 3 ? IconThree : data.level === 4 ? IconFour : Icon}
-                      opacity={!pickedUser ? 100 : pickedUser === data.geometry ? 100 : 0.5}
-                      zIndexOffset={!pickedUser ? "" : pickedUser === data.geometry ? 10000 : ""}>
+                      opacity={!pickedUser ? 100 : pickedUser === data._id ? 100 : 0.5}
+                      zIndexOffset={!pickedUser ? "" : pickedUser === data._id ? 10000 : ""}>
 
                       <MarkerPopup
                         name={data.name}
@@ -247,8 +250,8 @@ const MapView = () => {
                   <Marker
                     position={geometry}
                     icon={level === 1 ? Icon : level === 2 ? IconTwo : level === 3 ? IconThree : level === 4 ? IconFour : Icon}
-                    opacity={!pickedUser ? 100 : pickedUser === geometry ? 100 : 0.5}
-                    zIndexOffset={!pickedUser ? "" : pickedUser === geometry ? 10000 : ""}>
+                    opacity={!pickedUser ? 100 : pickedUser === _id ? 100 : 0.5}
+                    zIndexOffset={!pickedUser ? "" : pickedUser === _id ? 10000 : ""}>
 
                     <MarkerPopup
                       name={name}
@@ -261,10 +264,13 @@ const MapView = () => {
 
                   {pickedUser !== '' ?
                     <Marker
-                      position={pickedUser}
+                      position={locations.filter((o) => o['_id'] === pickedUser)[0].geometry}
                       icon={pulse}
                       opacity={open ? 100 : 0}>
+
                     </Marker> : ""}
+
+
                 </Map>
               </div >
             </FullScreen >

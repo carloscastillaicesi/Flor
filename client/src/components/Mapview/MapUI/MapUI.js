@@ -8,7 +8,7 @@ import fullscreeni from "../../../assets/fullscreen.svg";
 import normalscreen from "../../../assets/normalscreen.svg";
 import { SettingContext } from "../../../contexts/SettingContext";
 
-export default function MapUI({ name, pic, fullScreenMode, mapUrl, changeMap, handle, toggleFullscreen, centerMapViewMe, allUsersToggle, setpickedUser }) {
+export default function MapUI({ name, id, pic, fullScreenMode, mapUrl, changeMap, handle, toggleFullscreen, centerMapViewMe, allUsersToggle, setpickedUser }) {
  const { toggleModal, setMessage, setmodalType } = useContext(SettingContext);
  return (
   <div>
@@ -20,7 +20,7 @@ export default function MapUI({ name, pic, fullScreenMode, mapUrl, changeMap, ha
     <div className="button-menu" onClick={() => { setMessage(0); toggleModal(); setmodalType(0) }} />
 
    </div>
-   <Modal />
+   <Modal id={id} />
    <div className="button-group">
     <div className="button-rise-white" onClick={changeMap.bind(this)}><img src={!mapUrl ? terrain : street} alt="" /></div>
     <div className="button-rise-white" onClick={fullScreenMode === "false" ? () => {

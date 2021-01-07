@@ -24,7 +24,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
   let location = useLocation();
 
   const [state, setPage] = useState(false)
-  const { modal, toggleModal } = useContext(SettingContext);
+  const { toggleModal } = useContext(SettingContext);
   const { documents, documentStatus } = useContext(DocumentContext);
   const { barters, barterStatus } = useContext(BarterContext);
   const { users, userStatus } = useContext(UserInfoContext);
@@ -87,7 +87,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
     <Popup autoPan={false} closeButton={false} onClose={handleClose.bind(this)} onOpen={handleOpen.bind(this)} className={open ? "" : "popup"}>
 
-      <Modal />
+      {!open && <Modal name={name} id={_id} />}
 
       {pickedUser && pickedUserBarters && pickedUserDocuments ?
         <div>

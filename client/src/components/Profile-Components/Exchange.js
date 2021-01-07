@@ -126,8 +126,6 @@ function Exchange({ barters, name, pic, setModal }) {
               <h5> <strong>{name.split(" ")[0]} </strong>     <span>{switchedState === 0 ? "tiene este producto para intercambiar" : "quisiera tener este producto"}</span> </h5>
             </div>
 
-            <div className="picked-actions" onClick={setModal.bind()}>Contactar a {name.split(" ")[0]}</div>
-
           </div>
         </div>
         : ""}

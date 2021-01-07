@@ -71,6 +71,7 @@ hr {
 /* width */
 ::-webkit-scrollbar {
   height: 8px;
+  display: none;
 }
 
 /* Track */
@@ -93,7 +94,6 @@ hr {
 }
 
 @media only screen and (max-width: 727px) {
-  ::-webkit-scrollbar,
   ::-webkit-scrollbar {
     display: none;
   }
@@ -375,6 +375,50 @@ input[type="tel"]:focus {
     margin-top 0.5s ease-out, height 0.5s ease-out,
     background-color 0.5s ease-out;
 }
+.mihuerta-button-container {
+  display: flex;
+}
+.mihuerta-container-expanded .mihuerta-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px 5px 0px 5px;
+  opacity: 1;
+  height: initial;
+  background-color: var(--color-primary);
+  padding: 10px 22px;
+  border-radius: 15px;
+  transition: opacity 0.3s ease-out, background-color 0.5s ease-out,
+    margin-top 0.5s ease-out, height 0.5s ease-out,
+    background-color 0.5s ease-out;
+}
+.mihuerta-container-expanded .mihuerta-button h5 {
+  font-weight: bold;
+  margin: 0px 0px 0px 5px;
+}
+
+.mihuerta-container .mihuerta-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 0px;
+  opacity: 0;
+  height: 0px;
+  border-radius: 0px;
+  background-color: transparent;
+  transition: opacity 0.3s ease-out, background-color 0.5s ease-out,
+    margin-top 0.5s ease-out, height 0.5s ease-out,
+    background-color 0.5s ease-out;
+}
+
+.mihuerta-container .mihuerta-button img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  background-size: 50px;
+}
 
 .mihuerta-container img {
   height: 50px;
@@ -445,6 +489,7 @@ input[type="tel"]:focus {
   content: " \2807";
   color: var(--color-primary);
   font-size: 28px;
+  margin-right: 5px;
 }
 
 /*Closing COMPONENT: Mapview */
@@ -625,16 +670,19 @@ input[type="tel"]:focus {
 }
 
 .modal-center {
-  height: 100%;
-  width: 100%;
+  height: 101.5%;
+  width: 103.5%;
   z-index: 5;
   position: absolute;
   border-radius: 20px 20px 20px 20px;
   backdrop-filter: blur(2px);
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal-center::-webkit-scrollbar {
+  display: none !important;
 }
 
 .modal-center-close {
@@ -645,6 +693,7 @@ input[type="tel"]:focus {
   border-radius: 20px 20px 20px 20px;
   position: absolute;
   display: flex;
+
   justify-content: center;
   align-items: center;
   pointer-events: none;
@@ -657,9 +706,17 @@ input[type="tel"]:focus {
   display: flex;
   flex-direction: column;
   opacity: 1;
-  padding: 10px;
+  padding: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: initial;
   transition: opacity 0.1s linear, margin-top 0.2s linear;
+}
+.modal-content h2 {
+  margin: 5px 0px;
+}
+.modal-content h4 {
+  margin: 5px 0px;
 }
 
 .modal-content-close {
@@ -670,6 +727,7 @@ input[type="tel"]:focus {
   box-shadow: 0px;
   border-radius: 5px;
   box-shadow: 0px;
+  padding: 15px;
   transition: opacity 0.1s linear, margin-top 0.2s linear;
 }
 
@@ -687,9 +745,23 @@ input[type="tel"]:focus {
   padding: 5px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .modal-button-green {
+  background-color: var(--color-primary);
+}
+
+.modal-all-users-button {
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
   background-color: var(--color-primary);
 }
 
@@ -701,20 +773,24 @@ input[type="tel"]:focus {
 }
 
 .menu-modal-option {
-  padding: 10px 2px;
+  padding: 10px 10px 10px 2px;
   cursor: pointer;
   border-bottom: 1px var(--color-lines) solid;
   font-weight: bold;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   transition: background-color 0.2s ease-out;
 }
 
 .menu-modal-option:active {
-  padding: 10px 2px;
+  padding: 10px 10px 10px 2px;
   cursor: pointer;
   border-bottom: 1px var(--color-lines) solid;
   font-weight: bold;
   background-color: var(--color-lines);
+
   transition: background-color 0.2s ease-out;
 }
 
@@ -992,45 +1068,7 @@ input[type="tel"]:focus {
 
 /*POPUP COMPONENTS SHARED STYLES CLOSED */
 
-/*COMPONENT EXCLUSIVE STYLES: Peek*/
-
-.peek {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 250px;
-  border-radius: 25px;
-  padding: 2px;
-}
-
-.peek img {
-  height: 50px;
-  width: 50px;
-  object-fit: cover;
-  background-repeat: no-repeat;
-  background-size: 50px;
-  border-radius: 50%;
-}
-.peek h4 {
-  font-weight: bold;
-}
-
-.plus {
-  margin-right: 15px;
-}
-
-.plus::before {
-  content: "+";
-  font-size: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Varela Round", cursive;
-  color: var(--color-primary);
-}
+/*COMPONENT EXCLUSIVE STYLES: Peek (see mihuerta CSS class)*/
 
 /*COMPONENT EXCLUSIVE STYLES: Peek */
 
@@ -1443,12 +1481,12 @@ input[type="tel"]:focus {
 
 .all-users-info {
   width: 100%;
-  border-bottom: var(--color-lines) 2px solid;
+  border-bottom: var(--color-lines) 1px solid;
   display: flex;
   align-content: center;
   align-items: center;
-  margin: 0px 0px 0px 10px;
-  padding: 0px 0px 10px 10px;
+  margin: 0px 0px 0px 20px;
+  padding: 0px 0px 10px 0px;
 }
 
 .all-users-info-container {
