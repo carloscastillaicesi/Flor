@@ -21,7 +21,15 @@ function ExchangeMenuGot() {
             <div class="arrow-menuexchange right" /></div>
         </Link>
 
-
+        <Link to={`need/user/${localStore._id}`}>
+          <div className="menuexchange-single-option">
+            <div className="menuexchange-single-option-text">
+              <h3>Cosas que necesito </h3>
+              <h6>Mira los registros de lo que actualmente necesitas</h6>
+            </div>
+            <div class="arrow-menuexchange right" />
+          </div>
+        </Link>
 
       </div>
       <a href="http://wa.link/loascd" target="_blank" rel="noopener noreferrer"><div className="option-button"><h4>Registar algo nuevo</h4></div></a>

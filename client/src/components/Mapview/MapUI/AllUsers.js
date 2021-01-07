@@ -10,7 +10,7 @@ export default function AllUsers({ allUsersToggle, name, pic, data, pickedUser, 
     onClick={() => { setOpen(true); setOptions("map") }}>
    </div>
    <div className="all-users-content">
-    <div className="top-bar-component">
+    <div className="all-users-content-top-bar">
      <div onClick={() => allUsersToggle} class="arrow-icon">
       <div class="arrow"></div>
      </div>

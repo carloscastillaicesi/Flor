@@ -15,7 +15,7 @@ export default function MapUI({ name, id, pic, fullScreenMode, mapUrl, changeMap
    <div className="top-bar">
     <div >
      <img src={pic} alt="" />
-     <h3>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h3>
+     <h3>Hola, {name.split(" ").length >= 4 ? name.includes("del") ? name.split(" ").slice(0, 3).join(" ") : name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h3>
     </div>
     <div className="button-menu" onClick={() => { setMessage(0); toggleModal(); setmodalType(0) }} />
 

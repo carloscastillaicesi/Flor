@@ -1,6 +1,7 @@
 import React from 'react'
 import exchange from "../../assets/menu-exchange-option.svg";
 import library from "../../assets/menu-library-option.svg";
+import map from "../../assets/map-menu.svg";
 
 import { Link } from "react-router-dom";
 
@@ -23,6 +24,15 @@ function MenuFirst() {
             <div className="menufirst-single-option-text">
               <h3>Biblioteca Sembrado vida</h3>
               <h5>Encuentra documentos e información sobre lo que necesites</h5>
+            </div>
+            <div class="arrow-menu right" /></div>
+        </Link>
+        <Link to="/map">
+          <div className="menufirst-single-option">
+            <img src={map} alt="" className="option-image" />
+            <div className="menufirst-single-option-text">
+              <h3>Mapa</h3>
+              <h5>Mira tu huerta en la Red de sembrado vida y encuentra a otros sembradores de vida</h5>
             </div>
             <div class="arrow-menu right" /></div>
         </Link>

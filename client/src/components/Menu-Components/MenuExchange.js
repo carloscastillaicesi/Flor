@@ -12,19 +12,17 @@ function MenuExchange() {
         <Link to="exchange/got">
           <div className="menuexchange-single-option">
             <div className="menuexchange-single-option-text">
-              <h3>¿Qué tengo? </h3>
-              <h6>Gestiona las cosas que tienes para intercambiar </h6>
+              <h3>Mis Registros </h3>
+              <h6>Mira y gestiona tus registros para  que  otros sembradores de vida te puedan ayudar </h6>
             </div>
             <div class="arrow-menuexchange right" /></div>
-
         </Link>
+
         <Link to="exchange/need">
           <div className="menuexchange-single-option">
-
             <div className="menuexchange-single-option-text">
-              <h3>¿Qué necesito?</h3>
-              <h6>Encuentra o registra lo que necesitas, para que
-intercambies con otros sembradores de vida </h6>
+              <h3>Intercambios en la Red</h3>
+              <h6>Mira los registros y anuncios que otros sembradores de vida han hecho</h6>
             </div>
             <div class="arrow-menuexchange right" /></div>
         </Link>

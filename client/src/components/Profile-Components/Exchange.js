@@ -3,8 +3,8 @@ import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
 
-function Exchange({ barters, name, pic, setModal }) {
-
+function Exchange({ barters, name, pic, setModal, id }) {
+  var localStore = JSON.parse(localStorage.getItem('state'));
   const [pickedProduct, setpickedProduct] = useState()
   const [switched, setSwitched] = useState(barters.filter(b => b.tipo === 0))
   const [switchedState, setswitchedState] = useState(0)
@@ -86,14 +86,17 @@ function Exchange({ barters, name, pic, setModal }) {
           <div className="picked">
             <div className="picked-top">
               <div>
-                {!pickedProdID.includes(pickedProduct.id)
-                  ?
-                  <div className="element-options">
-                    <img src={document} alt="eye" /></div>
-                  :
-                  <div className="element-options"><img src={Hdocument} alt="eye" /></div>
-                }
-                <h6>{pickedProdID.includes(pickedProduct.id) ? "Este producto se encuentra oculto" : "Este producto se encuentra visible"}</h6>
+                {localStore._id === id && <div>
+                  {!pickedProdID.includes(pickedProduct.id)
+                    ?
+                    <div className="element-options">
+                      <img src={document} alt="eye" /></div>
+                    :
+                    <div className="element-options"><img src={Hdocument} alt="eye" /></div>
+                  }
+
+                  <h6>{pickedProdID.includes(pickedProduct.id) ? "Este producto se encuentra oculto" : "Este producto se encuentra visible"}</h6>
+                </div>}
               </div>
               <div onClick={() => pickedProductToggle()} className="close-picked">x</div>
             </div>
@@ -125,6 +128,8 @@ function Exchange({ barters, name, pic, setModal }) {
               <img src={pic} alt="" />
               <h5> <strong>{name.split(" ")[0]} </strong>     <span>{switchedState === 0 ? "tiene este producto para intercambiar" : "quisiera tener este producto"}</span> </h5>
             </div>
+
+            <div className="picked-actions" onClick={setModal.bind()}>Ir a este {switchedState === 0 ? "Intercambio" : "Anuncio"}</div>
 
           </div>
         </div>
@@ -167,21 +172,20 @@ function Exchange({ barters, name, pic, setModal }) {
                       <h4>{data.nombre}</h4>
                       <h5>{data.categorias.join(", ")}</h5>
                     </div>
+                    {localStore._id === id && <div style={{ display: "flex", alignItems: "center" }}>
+                      {!pickedProdID.includes(data._id) &&
+                        <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
+                      }
 
-                    {pickedProdID.includes(data._id)
-                      ?
-                      ""
-                      :
-                      <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
-                    }
+                      {!pickedProdID.includes(data._id)
+                        ?
+                        <div className="element-options" onClick={() => prodSetter(data._id)}>
+                          <img src={document} alt="eye" /></div>
+                        :
+                        <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
+                      }
 
-                    {!pickedProdID.includes(data._id)
-                      ?
-                      <div className="element-options" onClick={() => prodSetter(data._id)}>
-                        <img src={document} alt="eye" /></div>
-                      :
-                      <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
-                    }
+                    </div>}
                   </div>
                 }
               </div>)

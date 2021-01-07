@@ -211,7 +211,7 @@ const MapView = () => {
                   >
                     <Popup autoPan={false} closeButton={false} onClose={() => setOpen(true)} onOpen={() => { setOpen(false); centerMapViewMe(this); setpickedUser(''); }}>
                       <div className={!posActual ? "mihuerta-container" : "mihuerta-container-expanded"}>
-                        <div className="mihuerta-container-item" onClick={!posActual ? () => { posActualToggle(); setpickedUser(geometry) } : () => { posActualToggle() }}>
+                        <div className="mihuerta-container-item" onClick={!posActual ? () => { posActualToggle(); setpickedUser(_id) } : () => { posActualToggle() }}>
                           <img src={pic} alt="" />
                           <h2>Mi posición actual</h2>
                           <div className={!posActual ? "arrow-gallery down" : "arrow-gallery up"} />

@@ -9,9 +9,37 @@ function Modal({ name, id }) {
 
   }, [modal, modalMessage, modalType])
 
+  function widthSwitch(modalMessage) {
+    switch (modalMessage) {
+      case 0:
+        return "330px";
+      case 1:
+        return "200px";
+      case 5:
+        return "330px";
+      default:
+        return ""
+
+    }
+  }
+
+  function marginSwitch(modalMessage) {
+    switch (modalMessage) {
+      case 0:
+        return "80px auto";
+      case 1:
+        return "10px 0px 0px 110px";
+      case 5:
+        return "-35px 10px 0px auto";
+      default:
+        return ""
+
+    }
+  }
+
   return (
     <div className={modal ? modalType === 0 ? "modal" : "modal-center" : modalType === 0 ? "modal-close" : "modal-center-close"} onClick={toggleModal}>
-      <div className={modal ? "modal-content" : "modal-content-close"} style={{ width: modalType === 0 ? modalMessage === 0 ? "330px" : "200px" : "", margin: modalType === 0 ? modalMessage === 0 ? "80px auto" : "10px 0px 0px 110px" : "" }} onClick={(e) => e.stopPropagation()} >
+      <div className={modal ? "modal-content" : "modal-content-close"} style={{ width: widthSwitch(modalMessage), margin: marginSwitch(modalMessage) }} onClick={(e) => e.stopPropagation()} >
         {(() => {
           switch (modalMessage) {
             case 0:
@@ -52,6 +80,18 @@ function Modal({ name, id }) {
                 <div >
                   <h2>En construcción...</h2>
 
+                </div>
+              )
+            case 5:
+              return (
+                <div className="menu-modal-container">
+                  <Link to="/map">  <div className="menu-modal-option" onClick={toggleModal} onClick={toggleModal}><h5>Ir al Mapa</h5>  <div className="arrow-gallery right" /></div>
+                  </Link><Link to="/menu/exchange" >  <div className="menu-modal-option" onClick={toggleModal}><h5>Intercambios</h5> <div className="arrow-gallery right" /></div>
+                  </Link>
+                  <Link to="/menu/library" >  <div className="menu-modal-option" onClick={toggleModal}><h5>Biblioteca Virtual</h5> <div className="arrow-gallery right" /></div>
+                  </Link> <Link to={`/map/${id}`} >  <div className="menu-modal-option" onClick={toggleModal} ><h5>Mi Huerta</h5> <div className="arrow-gallery right" /></div>
+                  </Link>
+                  <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(4); }} style={{ borderBottom: "none" }}><h5>Conoce más sobre Sembrando Vida</h5> <div className="arrow-gallery right" /></div>
                 </div>
               )
             default:

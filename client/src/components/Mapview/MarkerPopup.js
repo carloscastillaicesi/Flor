@@ -92,10 +92,10 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
       {pickedUser && pickedUserBarters && pickedUserDocuments ?
         <div>
           <Route strict exact path="/map/aboutme">
-            <Peek name={name} pic={pic} setOpen={setOpen} />
+            <Peek name={name} pic={pic} setOpen={setOpen} id={_id} />
           </Route>
           <Route exact path={["/map/aboutme/plants", "/map/aboutme/userinfo", "/map/aboutme/exchange", "/map/aboutme/documents", "/map/aboutme/gallery", "/map/aboutme/detail", "/map/aboutme/badge"]}>
-            <TopProfileBar setOpen={setOpen} setPage={setPage} />
+            <TopProfileBar setOpen={setOpen} setPage={setPage} name={name} />
           </Route>
           <Route path="/map/aboutme/badge">
             <Badge
@@ -114,7 +114,8 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
               barters={pickedUserBarters}
               name={name}
               pic={pic}
-              setModal={toggleModal} />
+              setModal={toggleModal}
+              id={_id} />
           </Route>
           <Route path="/map/aboutme/documents">
             <Documents

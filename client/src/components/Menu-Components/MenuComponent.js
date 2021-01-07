@@ -25,6 +25,7 @@ function MenuComponent() {
   const history = useHistory();
 
   const [loading, setloading] = useState(true)
+  const { toggleModal, setMessage, setmodalType } = useContext(SettingContext);
 
   const { modal } = useContext(SettingContext);
   const { documents, documentStatus } = useContext(DocumentContext);
@@ -60,10 +61,11 @@ function MenuComponent() {
               <div class="arrow" />
             </div>
             <h3>Sembrando Vida</h3>
-            <img src={florLogo} alt="logoFlor" />
+            <div className="top-bar-menu-button-menu" onClick={() => { setMessage(5); toggleModal(); setmodalType(0) }} />
+
           </div>
           <div className="component-menu-content">
-            {modal ? <Modal /> : ""}
+            <Modal />
             <Route path="/menu/exchange/got/:userID">
               <ExchangeGot />
             </Route>
@@ -95,8 +97,7 @@ function MenuComponent() {
               <MenuFirst />
             </Route>
             <div className="illustrations-menufirst">
-              <img src={florf} alt="" />
-              <img src={florc} alt="" />
+              <img src={florLogo} alt="logoFlor" />
             </div>
           </div>
         </div>

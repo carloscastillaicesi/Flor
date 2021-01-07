@@ -2,7 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 @import url("//fonts.googleapis.com/css?family=Varela+Round");
-
 :root {
   --color-primary: #00cf88;
   --color-primary-active: #268766;
@@ -13,6 +12,7 @@
   --width-profile-component: 320px;
   --width-menu-component: 275px;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -28,18 +28,22 @@ h1 {
 h2 {
   font-size: 1.3em;
 }
+
 h4 {
   font-size: 1.2em;
   font-weight: 400;
 }
+
 h5 {
   font-size: 1em;
   font-weight: 400;
 }
+
 h6 {
   font-size: 0.8em;
   font-weight: 400;
 }
+
 p,
 h1,
 h2,
@@ -69,17 +73,20 @@ hr {
 }
 
 /* width */
+
 ::-webkit-scrollbar {
   height: 8px;
   display: none;
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary);
   border-radius: 10px;
@@ -127,6 +134,7 @@ input[type="tel"] {
   font-weight: 900;
   text-align: center;
 }
+
 input[type="tel"]:focus {
   height: 35px;
   border: solid 2px var(--color-primary-active);
@@ -152,6 +160,7 @@ input[type="tel"]:focus {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
 .up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
@@ -203,12 +212,14 @@ input[type="tel"]:focus {
 /*COMPONENT: MapView*/
 
 /*Leaflet Override Styles */
+
 .leaflet-container {
   width: 100vw;
   height: 100vh;
   position: absolute;
   z-index: 0;
 }
+
 .leaflet-popup-tip-container {
   display: none;
 }
@@ -239,12 +250,14 @@ input[type="tel"]:focus {
   padding: 0px;
   width: 100% !important;
 }
+
 /*Leaflet Override Styles */
 
 .mapview-container {
   width: 100vw;
   height: 100vh;
 }
+
 /*Floating Buttons*/
 
 .button-group {
@@ -277,6 +290,7 @@ input[type="tel"]:focus {
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
 }
+
 .icon-user {
   background-color: var(--color-primary);
   padding: 3px;
@@ -316,6 +330,7 @@ input[type="tel"]:focus {
   padding-bottom: 50px;
   transition: padding-bottom 0.7s ease-out;
 }
+
 .mihuerta-container {
   background-color: white;
   display: flex;
@@ -328,6 +343,7 @@ input[type="tel"]:focus {
   padding-bottom: 2px;
   transition: padding-bottom 1s ease-out;
 }
+
 .mihuerta-container-item {
   padding: 2px 15px 2px 2px;
   background-color: white;
@@ -364,6 +380,7 @@ input[type="tel"]:focus {
     margin-top 0.5s ease-out, height 0.5s ease-out,
     background-color 0.5s ease-out;
 }
+
 .mihuerta-container h3 {
   color: white;
   margin-top: 0px;
@@ -375,9 +392,11 @@ input[type="tel"]:focus {
     margin-top 0.5s ease-out, height 0.5s ease-out,
     background-color 0.5s ease-out;
 }
+
 .mihuerta-button-container {
   display: flex;
 }
+
 .mihuerta-container-expanded .mihuerta-button {
   color: white;
   display: flex;
@@ -393,6 +412,7 @@ input[type="tel"]:focus {
     margin-top 0.5s ease-out, height 0.5s ease-out,
     background-color 0.5s ease-out;
 }
+
 .mihuerta-container-expanded .mihuerta-button h5 {
   font-weight: bold;
   margin: 0px 0px 0px 5px;
@@ -427,6 +447,7 @@ input[type="tel"]:focus {
   background-size: 50px;
   border-radius: 50%;
 }
+
 .mihuerta-container-expanded img,
 .mihuerta-container img {
   height: 50px;
@@ -476,13 +497,11 @@ input[type="tel"]:focus {
 }
 
 .button-menu {
-  min-width: 40px;
   cursor: pointer;
   margin: none !important;
   height: 50px;
   display: flex;
   align-items: center;
-  padding: 0 0 0 25%;
 }
 
 .top-bar .button-menu:after {
@@ -493,7 +512,9 @@ input[type="tel"]:focus {
 }
 
 /*Closing COMPONENT: Mapview */
+
 /*<--------------------->*/
+
 /*COMPONENTS MarkerPopup */
 
 .marker-popup-error {
@@ -503,6 +524,7 @@ input[type="tel"]:focus {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
 }
+
 .marker-popup-error-item {
   text-align: center;
   padding: 100px 30px;
@@ -522,6 +544,7 @@ input[type="tel"]:focus {
   border-radius: 25px;
   padding-top: 15px;
 }
+
 /*Closing COMPONENT: MarkerPopup */
 
 /*<--------------------->*/
@@ -531,6 +554,7 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /*POPUP COMPONENTS SHARED STYLES */
+
 .component-userinfo,
 .component-gallery-full {
   background-color: var(--color-primary);
@@ -557,25 +581,19 @@ input[type="tel"]:focus {
 .component-exchange,
 .component-detailed {
   background-color: var(--color-primary);
-  background: -moz-linear-gradient(
-    top,
-    #00cf88 0%,
-    #00cf88 40%,
-    #ffffff 30%
-  ); /* FF3.6-15 */
+  background: -moz-linear-gradient(top, #00cf88 0%, #00cf88 40%, #ffffff 30%);
+  /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
     #00cf88 0%,
     #00cf88 40%,
     #ffffff 30%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    #00cf88 0%,
-    #00cf88 40%,
-    #ffffff 30%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cf88', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #00cf88 0%, #00cf88 40%, #ffffff 30%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cf88', endColorstr='#ffffff', GradientType=0);
+  /* IE6-9 */
   border-radius: 0px 0px 20px 20px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -588,7 +606,9 @@ input[type="tel"]:focus {
   outline: 120vw solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(2px);
 }
+
 /* width */
+
 .component-userinfo::-webkit-scrollbar,
 .component-gallery::-webkit-scrollbar,
 .component-gallery-full::-webkit-scrollbar,
@@ -649,7 +669,7 @@ input[type="tel"]:focus {
 
 .top-bar-component h3 {
   color: white;
-  margin-left: 20%;
+  font-size: 13px;
 }
 
 .modal {
@@ -693,7 +713,6 @@ input[type="tel"]:focus {
   border-radius: 20px 20px 20px 20px;
   position: absolute;
   display: flex;
-
   justify-content: center;
   align-items: center;
   pointer-events: none;
@@ -712,9 +731,11 @@ input[type="tel"]:focus {
   margin-top: initial;
   transition: opacity 0.1s linear, margin-top 0.2s linear;
 }
+
 .modal-content h2 {
   margin: 5px 0px;
 }
+
 .modal-content h4 {
   margin: 5px 0px;
 }
@@ -738,6 +759,7 @@ input[type="tel"]:focus {
   justify-content: space-between;
   padding-top: 10px;
 }
+
 .modal-buttons div {
   width: 45%;
   text-align: center;
@@ -790,7 +812,6 @@ input[type="tel"]:focus {
   border-bottom: 1px var(--color-lines) solid;
   font-weight: bold;
   background-color: var(--color-lines);
-
   transition: background-color 0.2s ease-out;
 }
 
@@ -811,6 +832,7 @@ input[type="tel"]:focus {
 }
 
 /* width */
+
 .picked-modal-background-container::-webkit-scrollbar {
   display: none;
 }
@@ -851,7 +873,6 @@ input[type="tel"]:focus {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--color-lines);
   margin-bottom: 10px;
 }
 
@@ -876,6 +897,7 @@ input[type="tel"]:focus {
   background-repeat: no-repeat;
   border-radius: 50%;
 }
+
 .picked-owner h4 {
   font-weight: bold;
 }
@@ -928,6 +950,7 @@ input[type="tel"]:focus {
   font-weight: bold;
   margin: 10px 10px 10px 0px;
 }
+
 /*<--------Element List---------->*/
 
 .element-description {
@@ -1062,6 +1085,7 @@ input[type="tel"]:focus {
   top: 3px;
   transform: rotate(-45deg);
 }
+
 /*<--------Arrow Icon---------->*/
 
 /*<--------------------->*/
@@ -1113,9 +1137,9 @@ input[type="tel"]:focus {
   display: flex;
   justify-content: center;
   align-content: center;
-
   border-radius: 50px;
 }
+
 .progress-badges img {
   z-index: 1;
   width: 90px;
@@ -1131,6 +1155,20 @@ input[type="tel"]:focus {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.1s ease-in;
+}
+
+.about-me:active {
+  background-color: var(--color-lines);
+  margin: 8px 0;
+  padding: 10px 20px 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.1s ease-out;
 }
 
 .gallery-info {
@@ -1155,6 +1193,17 @@ input[type="tel"]:focus {
   overflow: hidden;
   cursor: pointer;
   padding: 0px 10px 5px 10px;
+  transition: background-color 0.1s ease-out;
+}
+
+.gallery-user:active {
+  background-color: var(--color-lines);
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0px 10px 5px 10px;
+  transition: background-color 0.1s ease-out;
 }
 
 .gallery-wrapper {
@@ -1209,15 +1258,24 @@ input[type="tel"]:focus {
 }
 
 .single-action {
+  background-color: white;
   display: flex;
   justify-content: center;
   flex-direction: row;
+  cursor: pointer;
+  transition: background-color 0.1s ease-out;
+}
+
+.single-action :active {
+  background-color: var(--color-lines);
+  cursor: pointer;
+  transition: background-color 0.1s ease-out;
 }
 
 .single-action img {
   width: 38px;
   height: 38px;
-  margin: 10px 20px 0px 0px;
+  margin: 5px 20px 0px 0px;
 }
 
 .action-container {
@@ -1249,6 +1307,7 @@ input[type="tel"]:focus {
   height: 100%;
   margin-bottom: 10px;
 }
+
 .badges-container h4 {
   margin: 10px 0px;
   padding: 10px 30px 30px 30px;
@@ -1280,7 +1339,6 @@ input[type="tel"]:focus {
   display: flex;
   justify-content: center;
   align-content: center;
-
   border-radius: 50px;
 }
 
@@ -1292,7 +1350,6 @@ input[type="tel"]:focus {
   z-index: 1;
   width: 90px;
   height: 90px;
-
   margin-top: -20px;
 }
 
@@ -1307,6 +1364,7 @@ input[type="tel"]:focus {
   border-radius: 50%;
   margin-bottom: 5px;
 }
+
 /*COMPONENT EXCLUSIVE STYLES: Badge */
 
 /*<--------------------->*/
@@ -1319,6 +1377,7 @@ input[type="tel"]:focus {
   height: 200px;
   margin-bottom: 15px;
 }
+
 .action-container-gallery-wrapper img {
   width: 250px;
   height: 200px;
@@ -1336,7 +1395,12 @@ input[type="tel"]:focus {
   align-content: center;
   padding: 5px 0;
 }
+
 .action-info h3 {
+  margin-bottom: 2px;
+}
+
+.action-info h5 {
   margin-bottom: 5px;
 }
 
@@ -1346,6 +1410,7 @@ input[type="tel"]:focus {
   width: 95%;
   justify-content: space-between;
 }
+
 .detailed-info-container {
   background-color: white;
   margin-top: 7px;
@@ -1357,6 +1422,7 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /*COMPONENT EXCLUSIVE STYLES: Gallery*/
+
 .gallery {
   background-color: white;
   padding: 10px;
@@ -1370,17 +1436,22 @@ input[type="tel"]:focus {
   background-size: cover;
   margin-top: 5px;
 }
+
 .gallery p {
   text-align: center;
 }
+
 .image-view {
   height: inherit;
   background-color: black;
 }
+
 /*React Quick */
+
 .kvfysmfp {
   height: 100%;
 }
+
 .close-image-view {
   margin-left: 93%;
   cursor: pointer;
@@ -1427,6 +1498,7 @@ input[type="tel"]:focus {
 .all-users-content {
   background: var(--color-primary);
   max-height: 80vh;
+  padding-top: 200px;
   border-radius: 20px 20px 20px 20px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -1443,14 +1515,13 @@ input[type="tel"]:focus {
   display: none;
 }
 
-.all-users-content .top-bar-component {
-  position: relative;
-  margin-top: 70px;
-  justify-content: none;
-  padding: 8% 25% 7% 5%;
+.all-users-content-top-bar {
+  justify-content: space-around;
+  padding: 8% 25% 4% 5%;
   color: white;
   font-size: 14px;
   font-weight: 700;
+  display: flex;
 }
 
 .all-users-group {
@@ -1576,6 +1647,7 @@ input[type="tel"]:focus {
   margin-right: -20px;
   margin-bottom: 10px;
 }
+
 .plant-list-container .single-action img {
   background-image: url(./assets/defaultphotouser.png);
   background-size: 50px;
@@ -1587,6 +1659,7 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /* EXCLUSIVE STYLES: MenuComponent*/
+
 .component-menu {
   height: 100vh;
   width: 100vw;
@@ -1594,6 +1667,7 @@ input[type="tel"]:focus {
   margin: auto;
   overflow: hidden;
 }
+
 .top-bar-menu-component {
   top: 0;
   padding: 25px 5px 26px 10px;
@@ -1604,29 +1678,41 @@ input[type="tel"]:focus {
   justify-content: space-between;
   align-items: center;
 }
+
+.top-bar-menu-button-menu {
+  cursor: pointer;
+  margin: none !important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-menu-button-menu:after {
+  content: " \2807";
+  color: white;
+  font-size: 28px;
+  margin-right: 5px;
+}
+
 .component-menu-content {
-  height: 65%;
+  height: 80%;
 }
 
 .top-bar-menu-component h3 {
   color: white;
 }
 
-.top-bar-menu-component img {
-  image-resolution: initial;
-  width: 45px;
-  height: 45px;
-}
-
 .illustrations-menufirst {
   bottom: 0;
+  padding-top: 30px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .illustrations-menufirst img {
-  max-width: 221;
+  width: 50px;
+  height: 50px;
 }
 
 /*COMPONENT EXCLUSIVE STYLES: Plants */
@@ -1650,6 +1736,7 @@ input[type="tel"]:focus {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .menu-picked-modal-background-container .picked {
   position: absolute;
   align-self: center;
@@ -1665,6 +1752,7 @@ input[type="tel"]:focus {
 /*COMPONENT EXCLUSIVE STYLES: Plants */
 
 /*<--------------------->*/
+
 /* EXCLUSIVE STYLES: MenuFirst*/
 
 .component-menufirst {
@@ -1759,6 +1847,7 @@ input[type="tel"]:focus {
   display: flex;
   align-items: center;
 }
+
 .component-library-categories h5 {
   margin-right: 5px;
 }
@@ -1817,6 +1906,7 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /* EXCLUSIVE STYLES: MenuDocuments*/
+
 .component-menuexchange {
   height: 100%;
   width: 100%;
@@ -1826,6 +1916,7 @@ input[type="tel"]:focus {
   padding-top: 30px;
   overflow: scroll;
 }
+
 .component-exchange-text {
   text-align: center;
   width: 177px;

@@ -73,53 +73,12 @@ function ExchangeNeed() {
     <div className="component-menuexchange">
       <div className="component-exchange-text">
         <h2>Intercambios</h2>
-        <h6>Cosas que necesito</h6>
+        <h5>Cosas que necesito</h5>
       </div>
 
-      {pickedProduct ?
-        <div className="menu-picked-modal-background-container">
-          <div className="picked">
-            <div className="picked-top">
-              <div>
-                {!pickedProdID.includes(pickedProduct.id)
-                  ?
-                  <div className="element-options">
-                    <img src={document} alt="eye" /></div>
-                  :
-                  <div className="element-options"><img src={Hdocument} alt="eye" /></div>
-                }
-                <h6>{pickedProdID.includes(pickedProduct.id) ? "Este producto se encuentra oculto" : "Este producto se encuentra visible"}</h6>
-              </div>
-              <div onClick={() => pickedProductToggle()} className="close-picked">x</div>
-            </div>
-            <h2>{"Necesito"}</h2>
-            <h1>{pickedProduct.nombre}</h1>
-            <h5><strong>Categorías: </strong>{pickedProduct.categorias.join(", ")}</h5>
-
-
-
-            <hr />
-            <div className="product-description-box">
-              <h4><strong>Descripción</strong></h4>
-              <h5>{pickedProduct.descripcion}</h5>
-            </div>
-            <hr />
-            <div className="product-description-box">
-              <h4><strong>Cambio</strong></h4>
-              <h5>{pickedProduct.cambio}</h5>
-            </div>
-            <hr />
-            <div className="picked-owner">
-              <img src={localStore.pic} alt="" />
-              <h5>{"Necesitas este producto"}</h5>
-            </div>
-          </div>
-        </div>
-        : ""}
       <div >
 
-
-        {userHaves ?
+        {userHaves.length > 0 ?
           userHaves.map((data, i) =>
             <div key={i} className={deletedpickedProdID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"}>
 
@@ -160,7 +119,11 @@ function ExchangeNeed() {
               }
             </div>)
           :
-          "No has registrado productos o servicios para intercambiar u ofertar"}
+          <div className="component-exchange-text">
+            <br />
+            <h6>No has registrado anuncios aún de lo que necesitas</h6>
+          </div>
+        }
       </div>
     </div>
 
