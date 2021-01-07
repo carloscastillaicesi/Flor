@@ -230,7 +230,7 @@ const MapView = () => {
 
                   {data.map((data, i) => (
                     <Marker key={i}
-                      position={data.geometry}
+                      position={data.geometry ? data.geometry : { lat: "0", lng: "0" }}
                       icon={data.level === 1 ? Icon : data.level === 2 ? IconTwo : data.level === 3 ? IconThree : data.level === 4 ? IconFour : Icon}
                       opacity={!pickedUser ? 100 : pickedUser === data._id ? 100 : 0.5}
                       zIndexOffset={!pickedUser ? "" : pickedUser === data._id ? 10000 : ""}>
