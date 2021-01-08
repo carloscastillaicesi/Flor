@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
-function Documents({ documents, name, pic, setModal }) {
-
+function Documents({ documents, name, pic, setModal, id }) {
+  var localStore = JSON.parse(localStorage.getItem('state'));
   const [pickedDocID, setpickedDocID] = useState([]);
   const [deletionpickedDocID, setdeletionpickedDocID] = useState();
   const [deletedpickedDocID, setdeletepickedDocID] = useState([]);
@@ -115,22 +115,23 @@ function Documents({ documents, name, pic, setModal }) {
                       <h5>{data.categorias.join(", ")}</h5>
                     </div>
 
+                    {localStore._id === id && <div style={{ display: "flex", alignItems: "center" }}>
 
+                      {pickedDocID.includes(data._id)
+                        ?
+                        ""
+                        :
+                        <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
+                      }
 
-                    {pickedDocID.includes(data._id)
-                      ?
-                      ""
-                      :
-                      <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
-                    }
-
-                    {!pickedDocID.includes(data._id)
-                      ?
-                      <div className="element-options" onClick={() => docSetter(data._id)}>
-                        <img src={document} alt="eye" /></div>
-                      :
-                      <div className="element-options" onClick={() => docSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
-                    }
+                      {!pickedDocID.includes(data._id)
+                        ?
+                        <div className="element-options" onClick={() => docSetter(data._id)}>
+                          <img src={document} alt="eye" /></div>
+                        :
+                        <div className="element-options" onClick={() => docSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
+                      }
+                    </div>}
 
                   </div>
                 }

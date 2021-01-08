@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 function MenuLibrary({ documents }) {
-
+   var localStore = JSON.parse(localStorage.getItem('state'));
    //Loops through and gets all the documents from all the users 
-   var docs = documents;
+   var docs = documents.filter(b1 => b1.uId !== localStore._id);
 
    //Loops through and gets just the "categorias" key from "documentos" from all the users 
    var categorias = docs.map((docs) => docs.categorias).flat();
@@ -27,14 +27,25 @@ function MenuLibrary({ documents }) {
             <h2>Biblioteca</h2>
             <h6>Encuentra información especifica que otros Sembradores de vida nos han compartido </h6>
          </div>
+
+
          <div className="component-library-categories-container">
+
+            <Link to={`library/recent`}>
+               <div className="component-library-categories green-border">
+                  <h3>Lo más reciente</h3>
+                  <div>
+                     <div class="arrow-library right arrow-green" /></div>
+               </div></Link>
+
+            <hr />
             {categorias.map((categorias, i) =>
                <Link to={`library/${categorias}`}>
-                  <div key={i} className="component-library-categories">
+                  <div key={i} className="component-library-categories yellow-border ">
                      <h3>{categorias}</h3>
                      <div>
                         <h5>{itemsCategoria[i]}</h5>
-                        <div class="arrow-library right" /></div>
+                        <div class="arrow-library arrow-yellow right" /></div>
                   </div></Link>)}
          </div>
       </div>

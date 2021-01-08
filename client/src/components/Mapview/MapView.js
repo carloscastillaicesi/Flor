@@ -61,11 +61,14 @@ const MapView = () => {
 
   useEffect(() => {
     setModal(false);
-    if (userId && userId !== "aboutme") {
+    if (userId && !userId.includes("aboutme")) {
       if (locations) {
         centerMapViewUserParams(userId);
       }
+    } else if (userId && userId.includes("aboutme") && open) {
+      history.push("/map")
     }
+
     if (location) {
       if (location.state !== undefined) {
         if (location.state.latitude && location.state.longitude) {
@@ -107,8 +110,8 @@ const MapView = () => {
   }
 
   function centerMapViewUser() {
-    const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
+      const { leafletElement } = mapRef.current;
       var user = locations.filter((o) => o['_id'] === pickedUser)[0];
       let latlng = { lat: user.geometry[0], lng: user.geometry[1] }
       leafletElement.setView(latlng, 16);
@@ -233,7 +236,8 @@ const MapView = () => {
                       position={data.geometry ? data.geometry : { lat: "0", lng: "0" }}
                       icon={data.level === 1 ? Icon : data.level === 2 ? IconTwo : data.level === 3 ? IconThree : data.level === 4 ? IconFour : Icon}
                       opacity={!pickedUser ? 100 : pickedUser === data._id ? 100 : 0.5}
-                      zIndexOffset={!pickedUser ? "" : pickedUser === data._id ? 10000 : ""}>
+                      zIndexOffset={!pickedUser ? "" : pickedUser === data._id ? 10000 : ""}
+                    >
 
                       <MarkerPopup
                         name={data.name}

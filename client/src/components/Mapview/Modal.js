@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { SettingContext } from "../../contexts/SettingContext";
 import { Link } from "react-router-dom";
 function Modal({ name, id }) {
-
+  var localStore = JSON.parse(localStorage.getItem('state'));
   const { modal, toggleModal, modalMessage, modalType, setMessage, setmodalType } = useContext(SettingContext);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function Modal({ name, id }) {
       case 1:
         return "10px 0px 0px 110px";
       case 5:
-        return "-35px 10px 0px auto";
+        return "10px 10px 0px auto";
       default:
         return ""
 
@@ -57,11 +57,16 @@ function Modal({ name, id }) {
             case 1:
               return (
                 <div className="menu-modal-container">
-                  <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(3); }}>Contactar<div className="arrow-gallery right" /></div>
+                  {localStore._id !== id &&
+                    <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(3); }}>Contactar<div className="arrow-gallery right" /></div>
+                  }
                   <Link to="/map/aboutme/detail"><div className="menu-modal-option">Acerca de Mi<div className="arrow-gallery right" /></div></Link>
                   <Link to="/map/aboutme/exchange"><div className="menu-modal-option">Intercambios<div className="arrow-gallery right" /></div></Link>
                   <Link to="/map/aboutme/documents"><div className="menu-modal-option" style={{ borderBottom: "none" }}>Documentos<div className="arrow-gallery right" /></div></Link>
                 </div>
+
+
+
               )
             case 3:
               return (

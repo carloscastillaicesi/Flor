@@ -50,6 +50,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
 
   function handleOpen() {
+
     setpickedUserMapView('');
     setTimeout(() => {
       setOpen(false);
@@ -79,6 +80,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
     setTimeout(() => {
       setOpen(true);
       setPage(true);
+
       console.log("Cerró")
     }, 200);
   }
@@ -122,7 +124,8 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
               setModal={toggleModal}
               documents={pickedUserDocuments}
               name={name}
-              pic={pic} />
+              pic={pic}
+              id={_id} />
           </Route>
           <Route path="/map/aboutme/gallery">
             <Gallery

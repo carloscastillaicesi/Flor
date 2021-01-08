@@ -11,9 +11,10 @@ export default function AllUsers({ allUsersToggle, name, pic, data, pickedUser, 
    </div>
    <div className="all-users-content">
     <div className="all-users-content-top-bar">
-     <div onClick={() => allUsersToggle} class="arrow-icon">
+     <div onClick={() => allUsersToggle()} class="arrow-icon">
       <div class="arrow"></div>
      </div>
+
      <h4>Sembradores de Vida</h4>
     </div>
     <div className="user-info">

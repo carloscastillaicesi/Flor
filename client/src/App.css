@@ -646,7 +646,7 @@ input[type="tel"]:focus {
   display: flex;
   align-content: center;
   justify-content: center;
-  z-index: 7;
+  z-index: 11;
 }
 
 .top-bar-component {
@@ -678,6 +678,7 @@ input[type="tel"]:focus {
   z-index: 5;
   position: absolute;
   border-radius: 20px 20px 20px 20px;
+  z-index: 11;
 }
 
 .modal-close {
@@ -720,6 +721,7 @@ input[type="tel"]:focus {
 
 .modal-content {
   background-color: white;
+  width: 270px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   display: flex;
@@ -729,7 +731,8 @@ input[type="tel"]:focus {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: initial;
-  transition: opacity 0.1s linear, margin-top 0.2s linear;
+  height: initial;
+  transition: opacity 0.1s linear, margin-top 0.3s linear, height 0.3s linear;
 }
 
 .modal-content h2 {
@@ -742,6 +745,8 @@ input[type="tel"]:focus {
 
 .modal-content-close {
   opacity: 0;
+  width: 270px;
+  height: 0px;
   background-color: white;
   margin-top: -5px !important;
   z-index: -1;
@@ -749,7 +754,7 @@ input[type="tel"]:focus {
   border-radius: 5px;
   box-shadow: 0px;
   padding: 15px;
-  transition: opacity 0.1s linear, margin-top 0.2s linear;
+  transition: opacity 0.1s linear, margin-top 0.3s linear, height 0.3s linear;
 }
 
 .modal-buttons {
@@ -999,6 +1004,10 @@ input[type="tel"]:focus {
   opacity: 1;
   transition: opacity 0.7s ease-out, box-shadow 0.5s ease-out,
     border-left 0.7s ease-out, background-color 0.7s ease-out;
+}
+
+.list-item-yellow {
+  border-color: var(--color-terciary);
 }
 
 .element-list-item-hidden {
@@ -1263,13 +1272,6 @@ input[type="tel"]:focus {
   justify-content: center;
   flex-direction: row;
   cursor: pointer;
-  transition: background-color 0.1s ease-out;
-}
-
-.single-action :active {
-  background-color: var(--color-lines);
-  cursor: pointer;
-  transition: background-color 0.1s ease-out;
 }
 
 .single-action img {
@@ -1517,11 +1519,15 @@ input[type="tel"]:focus {
 
 .all-users-content-top-bar {
   justify-content: space-around;
-  padding: 8% 25% 4% 5%;
+  padding: 8% 25% 4% 8px;
   color: white;
   font-size: 14px;
   font-weight: 700;
   display: flex;
+}
+
+.all-users-content-top-bar h4 {
+  margin-left: 50px;
 }
 
 .all-users-group {
@@ -1665,16 +1671,28 @@ input[type="tel"]:focus {
   width: 100vw;
   padding: none;
   margin: auto;
-  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.component-menu-spinner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .top-bar-menu-component {
   top: 0;
+  position: sticky;
   padding: 25px 5px 26px 10px;
   height: 6%;
   width: inherit;
   background-color: var(--color-primary);
   display: flex;
+  z-index: 10;
   justify-content: space-between;
   align-items: center;
 }
@@ -1695,7 +1713,6 @@ input[type="tel"]:focus {
 }
 
 .component-menu-content {
-  height: 80%;
 }
 
 .top-bar-menu-component h3 {
@@ -1756,8 +1773,6 @@ input[type="tel"]:focus {
 /* EXCLUSIVE STYLES: MenuFirst*/
 
 .component-menufirst {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1840,6 +1855,13 @@ input[type="tel"]:focus {
   padding: 19px 0px 19px 19px;
   border-radius: 10px;
   margin: 18px 0px;
+}
+
+.green-border {
+  border-left: 19px var(--color-primary) solid;
+}
+
+.yellow-border {
   border-left: 19px var(--color-terciary) solid;
 }
 
@@ -1854,7 +1876,9 @@ input[type="tel"]:focus {
 
 .component-library-text {
   text-align: center;
-  width: 20%;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
 }
 
 .component-library-text h2 {
@@ -1862,13 +1886,54 @@ input[type="tel"]:focus {
 }
 
 .arrow-library {
-  border: solid var(--color-terciary);
+  border: solid;
+  border-radius: 3px;
   border-width: 0 4px 4px 0;
   display: inline-block;
   padding: 5px;
   height: 7px;
   margin-right: 10px;
   border-radius: 3px;
+}
+
+.arrow-green {
+  border-color: var(--color-primary);
+}
+
+.arrow-yellow {
+  border-color: var(--color-terciary);
+}
+
+.menu-exchange-switch {
+  margin: 7px 0px -8px 0;
+  width: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px;
+}
+
+.menu-exchange-switch-item-checked {
+  font-weight: bold;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  border-bottom: 3px solid var(--color-terciary);
+  transition: border-bottom 0.5s ease-out, color 0.5s ease-out;
+}
+
+.menu-exchange-switch-item-unchecked {
+  border-bottom: 3px solid var(--color-lines);
+  color: var(--color-secondary);
+  transition: border-bottom 0.5s ease-out, color 0.5s ease-out;
+}
+
+.menu-exchange-switch div {
+  width: 50%;
+  height: 20px;
+  padding: 16px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* EXCLUSIVE STYLES: MenuLibrary*/
@@ -1944,6 +2009,9 @@ input[type="tel"]:focus {
   margin: 30px 0px;
   border-left: 20px var(--color-primary) solid;
 }
+.menuexchange-yellow {
+  border-color: var(--color-terciary);
+}
 
 .menuexchange-single-option-text {
   padding: 10px;
@@ -1957,4 +2025,24 @@ input[type="tel"]:focus {
   padding: 7px;
   height: 10px;
   border-radius: 3px;
+}
+
+.arrow-menuexchange-yellow {
+  border-color: var(--color-terciary);
+}
+
+/* EXCLUSIVE STYLES: LibraryCategory*/
+
+/*<--------------------->*/
+
+/* EXCLUSIVE STYLES: Singleitems*/
+
+.component-single-item {
+  padding-top: 20px;
+  padding-right: 20px;
+  display: flex;
+
+  overflow-y: scroll;
+  width: 320px;
+  margin: auto;
 }

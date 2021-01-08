@@ -8,11 +8,10 @@ import MenuFirst from "./MenuFirst";
 import LibraryCategory from "./LibraryCategory";
 import ExchangeGot from "./ExchangeGot";
 import ExchangeNeed from "./ExchangeNeed";
-import ExchangeMenuNeed from "./ExchangeMenuNeed";
+import LibraryItem from "./LibraryItem";
+import ExchangeItem from "./ExchangeItem";
 import ExchangeNeedAllCategories from "./ExchangeNeedAllCategories";
-import ExchangeNeedCategory from "./ExchangeNeedCategory";
-import florc from "../../assets/flor-character-menufirst.png";
-import florf from "../../assets/flor-fill-menufirst.png";
+import ExchangeNeedCategory from "./ExchangeCategory";
 import { SettingContext } from "../../contexts/SettingContext";
 import { DocumentContext } from "../../contexts/DocumentContext";
 import { BarterContext } from "../../contexts/BarterContext";
@@ -49,13 +48,14 @@ function MenuComponent() {
   return (
     <div>
       {loading ?
-        <div className="homeuser-container">
+        <div className="component-menu-spinner">
           <img src={spinner} alt="" />
           <h3>Cargando...</h3>
         </div>
         :
 
         <div className="component-menu">
+          <Modal />
           <div className="top-bar-menu-component">
             <div onClick={goBack.bind()} class="arrow-icon">
               <div class="arrow" />
@@ -64,31 +64,35 @@ function MenuComponent() {
             <div className="top-bar-menu-button-menu" onClick={() => { setMessage(5); toggleModal(); setmodalType(0) }} />
 
           </div>
+
           <div className="component-menu-content">
-            <Modal />
+
             <Route path="/menu/exchange/got/:userID">
               <ExchangeGot />
             </Route>
             <Route path="/menu/exchange/need/user/:userID">
               <ExchangeNeed />
             </Route>
-            <Route path="/menu/exchange/need/categories/:category">
-              <ExchangeNeedCategory products={barters.filter(b1 => b1.tipo === 0)} userInfo={locations} />
-            </Route>
-            <Route exact strict path="/menu/exchange/need/categories">
-              <ExchangeNeedAllCategories products={barters.filter(b1 => b1.tipo === 0)} />
+            <Route path="/menu/exchange/categories/:category/:type">
+              <ExchangeNeedCategory products={barters} userInfo={locations} />
             </Route>
             <Route exact strict path="/menu/exchange/got">
               <ExchangeMenuGot />
             </Route>
             <Route exact strict path="/menu/exchange/need">
-              <ExchangeMenuNeed />
+              <ExchangeNeedAllCategories products={barters} userInfo={locations} />
             </Route>
             <Route strict exact path="/menu/exchange">
               <Exchange />
             </Route>
             <Route path="/menu/library/:category">
               <LibraryCategory documents={documents} userInfo={locations} />
+            </Route>
+            <Route strict exact path="/menu/doc/:id">
+              <LibraryItem documents={documents} userInfo={locations} />
+            </Route>
+            <Route strict exact path="/menu/item/:id">
+              <ExchangeItem barters={barters} userInfo={locations} />
             </Route>
             <Route strict exact path="/menu/library">
               <Library documents={documents} userInfo={locations} />

@@ -19,12 +19,12 @@ function MenuExchange() {
         </Link>
 
         <Link to="exchange/need">
-          <div className="menuexchange-single-option">
+          <div className="menuexchange-single-option menuexchange-yellow">
             <div className="menuexchange-single-option-text">
               <h3>Intercambios en la Red</h3>
               <h6>Mira los registros y anuncios que otros sembradores de vida han hecho</h6>
             </div>
-            <div class="arrow-menuexchange right" /></div>
+            <div class="arrow-menuexchange arrow-menuexchange-yellow right" /></div>
         </Link>
 
       </div>

@@ -41,7 +41,7 @@ function Badge({ name, pic, level }) {
           <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image-badge" />
           <h2>{name}</h2>
           <h3>Se encuentra en la</h3>
-          <h5><strong>Etapa {level}</strong> </h5>
+          <h5><strong>Etapa {level === 0 ? 1 : level}</strong> </h5>
         </div>
         <h5>Toca para conocer más</h5>
         <div className="progress">

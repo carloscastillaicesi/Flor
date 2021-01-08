@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
-
+import { Link } from "react-router-dom";
 function Exchange({ barters, name, pic, setModal, id }) {
   var localStore = JSON.parse(localStorage.getItem('state'));
   const [pickedProduct, setpickedProduct] = useState()
@@ -12,9 +12,6 @@ function Exchange({ barters, name, pic, setModal, id }) {
   const [pickedProdID, setpickedProdID] = useState([]);
   const [deletionpickedProdID, setdeletionpickedProdID] = useState();
   const [deletedpickedProdID, setdeletepickedProdID] = useState([]);
-
-
-
 
   function prodSetter(id) {
     if (pickedProdID.includes(id)) {
@@ -83,6 +80,7 @@ function Exchange({ barters, name, pic, setModal, id }) {
 
       {pickedProduct ?
         <div className="picked-modal-background-container">
+          <div onClick={() => pickedProductToggle()} className="picked-modal-background-container-scape-area"> </div>
           <div className="picked">
             <div className="picked-top">
               <div>
@@ -103,34 +101,27 @@ function Exchange({ barters, name, pic, setModal, id }) {
             <h2>{switchedState === 0 ? "Tengo" : "Necesito"}</h2>
             <h1>{pickedProduct.nombre}</h1>
             <h5><strong>Categorías: </strong>{pickedProduct.categorias.join(", ")}</h5>
-            {switchedState === 0 ?
-              <div class="picked-gallery-wrapper">
-                {pickedProduct.fotos ?
-                  <div>{
-                    pickedProduct.fotos.map((data, i) =>
-                      <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://i.ibb.co/C1CcBXb/Imagen-Da-ada.png'; e.target.onError = null; }} />)
-                  }</div> : <p> {name.split(" ")[0]} no ha subido imágenes</p>}
-              </div>
 
-              : ""}
             <hr />
             <div className="product-description-box">
               <h4><strong>Descripción</strong></h4>
-              <h5>{pickedProduct.descripcion}</h5>
+              <h5 className="text-preview">{pickedProduct.descripcion}</h5>
             </div>
             <hr />
-            <div className="product-description-box">
-              <h4><strong>Cambio</strong></h4>
-              <h5>{pickedProduct.cambio}</h5>
-            </div>
-            <hr />
+
             <div className="picked-owner">
               <img src={pic} alt="" />
-              <h5> <strong>{name.split(" ")[0]} </strong>     <span>{switchedState === 0 ? "tiene este producto para intercambiar" : "quisiera tener este producto"}</span> </h5>
+
+              {localStore._id !== id ?
+
+
+                <h5>  <strong>{name.split(" ")[0]} </strong>     <span>{switchedState === 0 ? "tiene este producto para intercambiar" : "quisiera tener este producto"}</span>          </h5>
+                : <h5><span>{switchedState === 0 ? "Quieres intercambiar este producto" : "Quisieras tener este producto"}</span>       </h5>}
+
             </div>
-
-            <div className="picked-actions" onClick={setModal.bind()}>Ir a este {switchedState === 0 ? "Intercambio" : "Anuncio"}</div>
-
+            <Link to={`/menu/item/${pickedProduct.id}`}>
+              <div className="picked-actions" >Ver más de este {switchedState === 0 ? "Intercambio" : "Anuncio"}</div>
+            </Link>
           </div>
         </div>
         : ""}
@@ -172,7 +163,9 @@ function Exchange({ barters, name, pic, setModal, id }) {
                       <h4>{data.nombre}</h4>
                       <h5>{data.categorias.join(", ")}</h5>
                     </div>
-                    {localStore._id === id && <div style={{ display: "flex", alignItems: "center" }}>
+
+                    {localStore._id === id ? <div style={{ display: "flex", alignItems: "center" }}>
+
                       {!pickedProdID.includes(data._id) &&
                         <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
                       }
@@ -185,7 +178,7 @@ function Exchange({ barters, name, pic, setModal, id }) {
                         <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
                       }
 
-                    </div>}
+                    </div> : <div className="arrow-gallery right" />}
                   </div>
                 }
               </div>)

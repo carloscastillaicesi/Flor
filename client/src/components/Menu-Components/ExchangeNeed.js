@@ -3,6 +3,7 @@ import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
 import { BarterContext } from "../../contexts/BarterContext";
+import { Link } from "react-router-dom";
 
 function ExchangeNeed() {
   var localStore = JSON.parse(localStorage.getItem('state'));
@@ -80,44 +81,45 @@ function ExchangeNeed() {
 
         {userHaves.length > 0 ?
           userHaves.map((data, i) =>
-            <div key={i} className={deletedpickedProdID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"}>
+            <Link to={`/menu/item/${data._id}`}>
+              <div key={i} className={deletedpickedProdID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"}>
 
-              {deletionpickedProdID === data._id ?
+                {deletionpickedProdID === data._id ?
 
-                <div className={deletionpickedProdID.includes(data._id) ? "element-list-item-deletion" : "element-list-item"}>
+                  <div className={deletionpickedProdID.includes(data._id) ? "element-list-item-deletion" : "element-list-item"}>
 
-                  <img src={deleteI} alt="" />
-                  <h5>¿Deseas eliminar este Item?</h5>
-                  <div className="element-options" onClick={() => prodDelete(data._id)}>Sí</div>
-                  <div className="element-options" onClick={() => deletionProcess(data._id)}>No</div>
-                </div>
-
-                :
-
-                <div src={data} className={pickedProdID.includes(data._id) ? "element-list-item-hidden" : "element-list-item"} >
-
-                  <div className="element-description" onClick={() => pickedProductToggle(data.descripcion, data.cambio, data.nombre, data.categorias, data.id)}  >
-                    <h4>{data.nombre}</h4>
-                    <h5>{data.categorias.join(", ")}</h5>
+                    <img src={deleteI} alt="" />
+                    <h5>¿Deseas eliminar este Item?</h5>
+                    <div className="element-options" onClick={() => prodDelete(data._id)}>Sí</div>
+                    <div className="element-options" onClick={() => deletionProcess(data._id)}>No</div>
                   </div>
 
-                  {pickedProdID.includes(data._id)
-                    ?
-                    ""
-                    :
-                    <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
-                  }
+                  :
 
-                  {!pickedProdID.includes(data._id)
-                    ?
-                    <div className="element-options" onClick={() => prodSetter(data._id)}>
-                      <img src={document} alt="eye" /></div>
-                    :
-                    <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
-                  }
-                </div>
-              }
-            </div>)
+                  <div src={data} className={pickedProdID.includes(data._id) ? "element-list-item-hidden" : "element-list-item"} >
+
+                    <div className="element-description" onClick={() => pickedProductToggle(data.descripcion, data.cambio, data.nombre, data.categorias, data.id)}  >
+                      <h4>{data.nombre}</h4>
+                      <h5>{data.categorias.join(", ")}</h5>
+                    </div>
+
+                    {pickedProdID.includes(data._id)
+                      ?
+                      ""
+                      :
+                      <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
+                    }
+
+                    {!pickedProdID.includes(data._id)
+                      ?
+                      <div className="element-options" onClick={() => prodSetter(data._id)}>
+                        <img src={document} alt="eye" /></div>
+                      :
+                      <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
+                    }
+                  </div>
+                }
+              </div></Link>)
           :
           <div className="component-exchange-text">
             <br />
