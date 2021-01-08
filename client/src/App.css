@@ -176,7 +176,52 @@ input[type="tel"]:focus {
 /*Closing Global Styles */
 
 /*<--------------------->*/
+/*Onboarding */
 
+.onboarding-container {
+  width: 330px;
+  margin-right: 0px;
+  opacity: 1;
+  transition: margin-right 0.8s ease-in, opacity 1.2s ease-in;
+}
+
+.onboarding-container-out {
+  margin-right: 200px;
+  opacity: 0;
+  transition: margin-right 0.8s ease-out, opacity 1.2s ease-out;
+  width: 330px;
+}
+.onboarding-container-text {
+  text-align: left;
+  padding: 10px;
+}
+.onboarding-container-text h1 {
+  margin-bottom: 10px;
+}
+
+.onboarding-container-button {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 320px;
+}
+
+.onboarding-container-button h3 {
+  color: var(--color-primary);
+}
+
+.button-onboarding {
+  height: 40px;
+  padding-top: 10px;
+  width: 127px;
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: 76.7838px;
+}
+/*<--------------------->*/
+
+/*closing: Onboarding*/
 /*COMPONENT: HomeUsers*/
 
 .homeuser-container {
@@ -797,6 +842,7 @@ input[type="tel"]:focus {
 }
 
 .menu-modal-container {
+  z-index: 15;
 }
 
 .menu-modal-option {

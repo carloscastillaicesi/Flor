@@ -37,6 +37,16 @@ function Modal({ name, id }) {
     }
   }
 
+  function dimmer(time) {
+
+    setTimeout(() => {
+      toggleModal()
+    }, time);
+
+  }
+
+
+
   return (
     <div className={modal ? modalType === 0 ? "modal" : "modal-center" : modalType === 0 ? "modal-close" : "modal-center-close"} onClick={toggleModal}>
       <div className={modal ? "modal-content" : "modal-content-close"} style={{ width: widthSwitch(modalMessage), margin: marginSwitch(modalMessage) }} onClick={(e) => e.stopPropagation()} >
@@ -75,7 +85,7 @@ function Modal({ name, id }) {
                   <h4>Se enviará el número de este usuario a tu WhatsApp para que le puedas hablar </h4>
                   <h5><strong>¿Deseas Recibirlo?</strong></h5>
                   <div className="modal-buttons">
-                    <div className="modal-button-green" onClick={toggleModal}>Sí</div>
+                    <div className="modal-button-green" onClick={() => { setMessage(6); dimmer(10000); }} >Sí</div>
                     <div className="modal-button-red" onClick={toggleModal}>No</div>
                   </div>
                 </div>
@@ -97,6 +107,17 @@ function Modal({ name, id }) {
                   </Link> <Link to={`/map/${id}`} >  <div className="menu-modal-option" onClick={toggleModal} ><h5>Mi Huerta</h5> <div className="arrow-gallery right" /></div>
                   </Link>
                   <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(4); }} style={{ borderBottom: "none" }}><h5>Conoce más sobre Sembrando Vida</h5> <div className="arrow-gallery right" /></div>
+                </div>
+              )
+            case 6:
+              return (
+                <div className="menu-modal-container">
+                  <h2>Ya envie este contacto a tu WhatsApp</h2>
+                  <h4>Espero te sea de ayuda, recuerda decirle que haces parte de la red de Sembrando Vida</h4>
+                  <hr />
+                  <h5><strong>*Si no has hablado con flor en las últimas 24 horas no será posible enviarte este contacto.</strong></h5>
+                  <hr />
+                  <h6>{`Este mensaje desaparecerá automaticamente en 10 segundos`}</h6>
                 </div>
               )
             default:

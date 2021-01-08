@@ -5,12 +5,13 @@ import { SettingContext } from "../contexts/SettingContext";
 import florInicial from "../assets/flor_inicio.png"
 import { useQuery } from "react-query";
 import spinner from "../assets/spinner.svg"
+import Onboarding from "./Onboarding";
 
 const HomeUsers = () => {
 
   let { userid } = useParams();
 
-  console.log(userid);
+
 
   const fetchUser = async () => {
     const res = await fetch(`/user/${userid}`, {
@@ -24,7 +25,7 @@ const HomeUsers = () => {
 
 
   const history = useHistory();
-  const { name, userData, geometry, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
+  const { name, level, userData, geometry, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
 
   const { toggleFullscreen } = useContext(SettingContext);
 
@@ -74,18 +75,23 @@ const HomeUsers = () => {
           <img src={spinner} alt="" />
           <h2>Cargando...</h2>
         </div>
-        : <div className="homeuser-container">
-          <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
-          <br />
-          <img src={florInicial} alt="" />
-          <br />
-          <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
-          <div onClick={() => {
-            getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
-              history.push("/map")
-            }, 1000);
-          }} className="option-button">Activar Geolocalización</div>
 
+        : <div className="homeuser-container">
+
+
+          {level <= 1 ? <Onboarding getGeo={getGeo} setCurrentUserLocalStorage={setCurrentUserLocalStorage} name={name}></Onboarding> :
+            <div>
+              <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
+              <br />
+              <img src={florInicial} alt="" />
+              <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
+              <div onClick={() => {
+                getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
+                  history.push("/map")
+                }, 1000);
+              }} className="option-button">Activar Geolocalización</div>
+            </div>
+          }
         </div >}
 
     </div >
