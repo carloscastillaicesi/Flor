@@ -10,6 +10,7 @@ class SettingContextProvider extends Component {
   modal: false,
   modalMessage: 0,
   modalType: 0,
+  contactId: ""
  }
  toggleFullscreen = (e) => {
   this.setState({ fullScreenMode: e })
@@ -39,9 +40,13 @@ class SettingContextProvider extends Component {
   this.setState({ modalType: option })
  }
 
+ setContactId = (option) => {
+  this.setState({ contactId: option })
+ }
+
  render() {
   return (
-   <SettingContext.Provider value={{ ...this.state, toggleFullscreen: this.toggleFullscreen, toggleModal: this.toggleModal, setModal: this.setModal, setMessage: this.setMessage, setmodalType: this.setmodalType }}>
+   <SettingContext.Provider value={{ ...this.state, toggleFullscreen: this.toggleFullscreen, toggleModal: this.toggleModal, setModal: this.setModal, setMessage: this.setMessage, setmodalType: this.setmodalType, setContactId: this.setContactId }}>
     {this.props.children}
    </SettingContext.Provider>
   )

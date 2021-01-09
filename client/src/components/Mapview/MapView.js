@@ -23,7 +23,6 @@ import spinner from "../../assets/spinner.svg"
 
 const MapView = () => {
 
-
   const { _id, name, geometry, current, pic, level, userData, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
 
   var localStore = JSON.parse(localStorage.getItem('state'));
@@ -38,6 +37,7 @@ const MapView = () => {
   }
 
   const { isLoading, isError, data } = useQuery('locations', fetchLocations);
+
 
   const [pickedUser, setpickedUser] = useState('')
   const [mapUrl, setMapUrl] = useState(true)
@@ -233,7 +233,7 @@ const MapView = () => {
 
                   {data.map((data, i) => (
                     <Marker key={i}
-                      position={data.geometry ? data.geometry : { lat: "0", lng: "0" }}
+                      position={data.geometry.length > 0 ? data.geometry : { lat: "0", lng: "0" }}
                       icon={data.level === 1 ? Icon : data.level === 2 ? IconTwo : data.level === 3 ? IconThree : data.level === 4 ? IconFour : Icon}
                       opacity={!pickedUser ? 100 : pickedUser === data._id ? 100 : 0.5}
                       zIndexOffset={!pickedUser ? "" : pickedUser === data._id ? 10000 : ""}

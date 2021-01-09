@@ -9,14 +9,15 @@ export default function AllUsers({ allUsersToggle, name, pic, data, pickedUser, 
    <div className="all-users-map-scape-area"
     onClick={() => { setOpen(true); setOptions("map") }}>
    </div>
-   <div className="all-users-content">
-    <div className="all-users-content-top-bar">
-     <div onClick={() => allUsersToggle()} class="arrow-icon">
-      <div class="arrow"></div>
-     </div>
-
-     <h4>Sembradores de Vida</h4>
+   <div className="all-users-content-top-bar">
+    <div onClick={() => allUsersToggle()} class="arrow-icon">
+     <div class="arrow"></div>
     </div>
+
+    <h4>Sembradores de Vida</h4>
+   </div>
+   <div className="all-users-content">
+
     <div className="user-info">
      <img src={sembrando} alt="" className="user-profile-image" />
      <h2> {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h2>
@@ -26,7 +27,7 @@ export default function AllUsers({ allUsersToggle, name, pic, data, pickedUser, 
     {/*The Sketchiest way to overcome the fact that setting a state inside of an OnClick event just*/}
 
     <div className="all-users-group">
-     {data.map((data, i) => (
+     {data.filter(f => f.geometry[0] > 0).map((data, i) => (
       <div onClick={pickedUser === ''
        ? () => { setpickedUser(data._id); }
        : pickedUser === data._id

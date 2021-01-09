@@ -89,7 +89,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
     <Popup autoPan={false} closeButton={false} onClose={handleClose.bind(this)} onOpen={handleOpen.bind(this)} className={open ? "" : "popup"}>
 
-      {!open && <Modal name={name} id={_id} />}
+      {!open && <Modal name={name} />}
 
       {pickedUser && pickedUserBarters && pickedUserDocuments ?
         <div>
@@ -97,7 +97,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
             <Peek name={name} pic={pic} setOpen={setOpen} id={_id} />
           </Route>
           <Route exact path={["/map/aboutme/plants", "/map/aboutme/userinfo", "/map/aboutme/exchange", "/map/aboutme/documents", "/map/aboutme/gallery", "/map/aboutme/detail", "/map/aboutme/badge"]}>
-            <TopProfileBar setOpen={setOpen} setPage={setPage} name={name} />
+            <TopProfileBar setOpen={setOpen} setPage={setPage} name={name} id={_id} />
           </Route>
           <Route path="/map/aboutme/badge">
             <Badge

@@ -78,7 +78,6 @@ const HomeUsers = () => {
 
         : <div className="homeuser-container">
 
-
           {level <= 1 ? <Onboarding getGeo={getGeo} setCurrentUserLocalStorage={setCurrentUserLocalStorage} name={name}></Onboarding> :
             <div>
               <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>

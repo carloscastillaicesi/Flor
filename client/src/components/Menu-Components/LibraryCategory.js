@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useParams, Link } from "react-router-dom";
-import document from "../../assets/ver-documento.svg";
-import Hdocument from "../../assets/ocultar-documento.svg";
-import deleteI from "../../assets/delete.svg";
 function LibraryCategory({ documents, userInfo }) {
 
   //Loops through and gets all the documents from all the users 
