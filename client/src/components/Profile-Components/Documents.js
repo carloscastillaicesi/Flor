@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
+import { Link } from "react-router-dom";
 function Documents({ documents, name, pic, setModal, id }) {
   var localStore = JSON.parse(localStorage.getItem('state'));
   const [pickedDocID, setpickedDocID] = useState([]);
@@ -78,7 +79,8 @@ function Documents({ documents, name, pic, setModal, id }) {
               <img src={pic} alt="" />
               <h5> <strong>{name.split(" ")[0]} </strong>subió este documento</h5>
             </div>
-            <a href={pickedDocument.url} target={"_blank"} rel="noopener noreferrer">  <div className="picked-actions">Ver Documento</div> </a>
+            <Link to={`/menu/doc/${pickedDocument.id}`}>
+              <div className="picked-actions">Ir a Documento</div> </Link>
 
           </div>
         </div>

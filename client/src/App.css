@@ -356,11 +356,18 @@ input[type="tel"]:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 250px;
+  max-width: 300px;
   border-radius: 25px;
   padding: 2px;
+
   padding-bottom: 2px;
   transition: padding-bottom 0.7s ease-out;
+}
+.mihuerta-container h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 10px;
 }
 
 .mihuerta-container-expanded {
@@ -374,6 +381,12 @@ input[type="tel"]:focus {
   padding: 2px;
   padding-bottom: 50px;
   transition: padding-bottom 0.7s ease-out;
+}
+.mihuerta-container-expanded h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 10px;
 }
 
 .mihuerta-container {
@@ -833,7 +846,7 @@ input[type="tel"]:focus {
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 20px;
   background-color: var(--color-primary);
 }
 
@@ -1058,7 +1071,7 @@ input[type="tel"]:focus {
 
 .element-list-item-hidden {
   opacity: 0.5;
-  text-decoration: line-through;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1074,7 +1087,6 @@ input[type="tel"]:focus {
 }
 
 .element-list-item-deletion {
-  text-decoration: line-through;
   text-decoration: none;
   color: white;
   display: flex;
@@ -1310,9 +1322,6 @@ input[type="tel"]:focus {
   margin-top: 10px;
   padding: 20px;
   height: 26.5%;
-  filter: grayscale(100%);
-  text-decoration: line-through;
-  pointer-events: none;
 }
 
 .single-action {
@@ -1570,6 +1579,13 @@ input[type="tel"]:focus {
   z-index: 5;
   width: var(--width-profile-component);
   height: var(--height-profile-component);
+}
+
+.all-users-content h5 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 150px;
 }
 
 .all-users-content::-webkit-scrollbar {
@@ -2100,11 +2116,17 @@ input[type="tel"]:focus {
 /* EXCLUSIVE STYLES: Singleitems*/
 
 .component-single-item {
-  padding-top: 20px;
-  padding-right: 20px;
+  width: 100vw;
   display: flex;
+  justify-content: center;
+  padding: 20px 5px;
+}
 
+.component-single-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow-y: scroll;
-  width: 320px;
-  margin: auto;
+  width: 330px;
+  align-self: center;
 }

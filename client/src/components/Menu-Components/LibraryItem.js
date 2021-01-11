@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useParams } from "react-router-dom";
+import { SettingContext } from "../../contexts/SettingContext";
+
 function LibraryItem({ documents, userInfo }) {
 
   let { id } = useParams();
 
-  var localStore = JSON.parse(localStorage.getItem('state'));
 
+
+  const { toggleModal, setMessage, setmodalType, setContactId } = useContext(SettingContext);
   const [doc] = useState(documents.filter(d => d._id === id)[0])
   console.log("Doc", userInfo)
   const [owner] = useState(userInfo.filter(d => d._id === doc.uId)[0])
@@ -14,7 +17,7 @@ function LibraryItem({ documents, userInfo }) {
   return (
     <div className="component-single-item">
       {doc ?
-        <div >
+        <div className="component-single-item-content">
           <h1>{doc.nombre}</h1>
           <hr />
           <h3><strong>Temas</strong></h3>
@@ -25,10 +28,11 @@ function LibraryItem({ documents, userInfo }) {
             <h5> <strong>{owner.name.split(" ")[0]} </strong>subió este documento</h5>
           </div>
           <a href={doc.url} target={"_blank"} rel="noopener noreferrer">  <div className="picked-actions">Ver Documento</div> </a>
+          <div onClick={() => { setContactId(id); setMessage(9); toggleModal(); setmodalType(1) }} className="picked-actions">Compartir Documento</div>
 
         </div>
 
-        : ""}
+        : <p>{`Otros usuarios aún no han subido documentos`}</p>}
     </div>
   )
 }

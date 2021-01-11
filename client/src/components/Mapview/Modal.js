@@ -21,6 +21,16 @@ function Modal({ id }) {
   }
 
 
+  const sendDoc = async (doc) => {
+    console.log(`/sendocument/${localStore._id}-${doc}`)
+    const res = await fetch(`/sendocument/${localStore._id}-${doc}`, {
+      crossDomain: true
+    })
+    const data = await res.json();
+    return data;
+
+  }
+
   useEffect(() => {
 
   }, [modal, modalMessage, modalType])
@@ -67,7 +77,12 @@ function Modal({ id }) {
     if (contactId) {
       sendNumber(contactId);
     }
+  }
 
+  function sendDocument() {
+    if (contactId) {
+      sendDoc(contactId);
+    }
   }
 
   return (
@@ -158,6 +173,29 @@ function Modal({ id }) {
                   <div className="menu-modal-option" style={{ textDecoration: "  line-through" }}>Intercambios<div className="arrow-gallery right" /></div>
 
                   <div className="menu-modal-option" style={{ borderBottom: "none", textDecoration: "  line-through" }}>Documentos<div className="arrow-gallery right" /></div>
+                </div>
+              )
+            case 9:
+              return (
+                <div >
+                  <h2>Compartir Documento</h2>
+                  <h4>Se enviará este documento a tu WhatsApp para que lo puedas compartir</h4>
+                  <h5><strong>¿Deseas Recibirlo?</strong></h5>
+                  <div className="modal-buttons">
+                    <div className="modal-button-green" onClick={() => { sendDocument(); setMessage(10); dimmer(10000); }} >Sí</div>
+                    <div className="modal-button-red" onClick={toggleModal}>No</div>
+                  </div>
+                </div>
+              )
+            case 10:
+              return (
+                <div className="menu-modal-container">
+                  <h2>{`Ya envie el contacto a tu WhatsApp`}</h2>
+                  <h4>Espero te sea de ayuda este documento. </h4>
+                  <hr />
+                  <h5><strong>*Si no has hablado con flor en las últimas 24 horas no será posible enviarte este contacto.</strong></h5>
+                  <hr />
+                  <h6>{`Este mensaje desaparecerá automaticamente en 10 segundos`}</h6>
                 </div>
               )
             default:
