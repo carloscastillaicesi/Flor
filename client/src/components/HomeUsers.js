@@ -11,8 +11,6 @@ const HomeUsers = () => {
 
   let { userid } = useParams();
 
-
-
   const fetchUser = async () => {
     const res = await fetch(`/user/${userid}`, {
       crossDomain: true
@@ -22,14 +20,13 @@ const HomeUsers = () => {
 
   const { isLoading, data, status } = useQuery('currentUser', fetchUser);
 
-
-
-  const history = useHistory();
   const { name, level, userData, geometry, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
 
   const { toggleFullscreen } = useContext(SettingContext);
 
   var localStore = JSON.parse(localStorage.getItem('state'));
+
+  const history = useHistory();
 
   function getGeo() {
 
@@ -59,6 +56,7 @@ const HomeUsers = () => {
 
     );
   };
+
   useEffect(() => {
     toggleFullscreen('');
     if (status === "success" && data !== null) {
@@ -71,45 +69,53 @@ const HomeUsers = () => {
 
   return (
     <div>
-      {!data || isLoading ?
+      {!data || isLoading
+
+        ?
         <div className="homeuser-container">
           <img src={spinner} alt="" />
           <h2>Cargando...</h2>
         </div>
 
-        : <div className="homeuser-container">
+        :
+        <div className="homeuser-container">
 
-          {level <= 1 && <Onboarding getGeo={getGeo} setCurrentUserLocalStorage={setCurrentUserLocalStorage} name={name}></Onboarding>
-
-          }{localStore ? <div>
-            {localStore._id === data._id ?
-              <Redirect to="/map" /> :
-              <div>
-                <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
-                <br />
-                <img src={florInicial} alt="" />
-                <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
-                <div onClick={() => {
-                  getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
-                    history.push("/map")
-                  }, 1000);
-                }} className="option-button">Activar Geolocalización</div>
-              </div>
-            } </div>
-            : <div>
-              <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
-              <br />
-              <img src={florInicial} alt="" />
-              <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
-              <div onClick={() => {
-                getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
-                  history.push("/map")
-                }, 1000);
-              }} className="option-button">Activar Geolocalización</div>
-            </div>
-          }
-        </div >}
-
+          {level <= 1
+            ?
+            <Onboarding getGeo={getGeo} setCurrentUserLocalStorage={setCurrentUserLocalStorage} name={name}></Onboarding>
+            :
+            <div>
+              {localStore ?
+                <div>
+                  {localStore._id === data._id ?
+                    <Redirect to="/map" /> :
+                    <div>
+                      <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
+                      <br />
+                      <img src={florInicial} alt="" />
+                      <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
+                      <div onClick={() => {
+                        getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
+                          history.push("/map")
+                        }, 1000);
+                      }} className="option-button">Activar Geolocalización</div>
+                    </div>
+                  } </div>
+                :
+                <div>
+                  <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
+                  <br />
+                  <img src={florInicial} alt="" />
+                  <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
+                  <div onClick={() => {
+                    getGeo.bind(); setCurrentUserLocalStorage(); setTimeout(() => {
+                      history.push("/map")
+                    }, 1000);
+                  }} className="option-button">Activar Geolocalización</div>
+                </div>
+              }</div>}
+        </div >
+      }
     </div >
   );
 }

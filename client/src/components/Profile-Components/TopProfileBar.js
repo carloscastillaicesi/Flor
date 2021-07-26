@@ -27,7 +27,7 @@ function TopProfileBar({ setOpen, setPage, name, id }) {
         <div class="arrow" />
       </div>
       <h3>{`La huerta de ${name.split(" ").length >= 4 ? name.includes("del") ? name.split(" ").slice(0, 3).join(" ") : name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}`}</h3>
-      <div className="button-menu" onClick={() => { setContactId(id); setMessage(8); toggleModal(); setmodalType(0) }} />
+      <div className="button-menu" onClick={() => { setContactId(id); setMessage(1); toggleModal(); setmodalType(0) }} />
     </div>
   )
 };

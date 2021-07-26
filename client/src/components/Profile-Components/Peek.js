@@ -7,7 +7,7 @@ export default function Peek({ name, pic, id }) {
 
   const [dropdown, setdropdown] = useState(false)
   var localStore = JSON.parse(localStorage.getItem('state'));
-  const { toggleModal, setMessage, setmodalType } = useContext(SettingContext);
+  const { toggleModal, setMessage, setmodalType, setContactId } = useContext(SettingContext);
   function dropdownToggle() {
     setdropdown(!dropdown);
   }
@@ -24,9 +24,10 @@ export default function Peek({ name, pic, id }) {
         <div className="mihuerta-button-container">
 
           {localStore._id !== id &&
-            <div onClick={() => { toggleModal(); setmodalType(1); setMessage(3); }}><div className="mihuerta-button">
-              <svg width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7a5 5 0 01-1-3l1-1-2-3-3 1v1c0 1 1 4 4 7 2 2 5 3 7 3l1-3-2-2H9L8 8C7 9 6 8 5 7z" fill="#fff" /></svg>
-              <h5>Contactar</h5></div>
+            <div
+              onClick={() => { setContactId(id); setMessage(1); toggleModal(); setmodalType(0) }}><div className="mihuerta-button">
+                <svg width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7a5 5 0 01-1-3l1-1-2-3-3 1v1c0 1 1 4 4 7 2 2 5 3 7 3l1-3-2-2H9L8 8C7 9 6 8 5 7z" fill="#fff" /></svg>
+                <h5>Contactar</h5></div>
             </div>}
 
           <Link

@@ -21,7 +21,7 @@ export default function AllUsers({ allUsersToggle, name, pic, data, pickedUser, 
     <div className="user-info">
      <img src={sembrando} alt="" className="user-profile-image" />
      <h2> {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h2>
-     <h5>Conoce a otros Sembradores de vida de tu comunidad</h5>
+     <h6>Conoce a otros Sembradores de vida de tu comunidad</h6>
     </div>
 
     {/*The Sketchiest way to overcome the fact that setting a state inside of an OnClick event just*/}

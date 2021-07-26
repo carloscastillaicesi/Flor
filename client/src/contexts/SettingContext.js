@@ -12,6 +12,7 @@ class SettingContextProvider extends Component {
   modalType: 0,
   contactId: ""
  }
+
  toggleFullscreen = (e) => {
   this.setState({ fullScreenMode: e })
  }
@@ -23,9 +24,7 @@ class SettingContextProvider extends Component {
  }
 
  toggleModal = () => {
-
   this.setState({ modal: !this.state.modal })
-
  }
 
  setModal = (b) => {
@@ -41,7 +40,9 @@ class SettingContextProvider extends Component {
  }
 
  setContactId = (option) => {
-  this.setState({ contactId: option })
+  console.log(option, this.state.contactId)
+  this.setState({ contactId: option });
+  console.log(option, this.state.contactId)
  }
 
  render() {

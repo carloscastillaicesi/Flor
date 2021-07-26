@@ -31,7 +31,6 @@ function MenuComponent() {
   const { barters, barterStatus } = useContext(BarterContext);
   const { locations, locationsStatus } = useContext(LocationContext);
 
-
   useEffect(() => {
     if (barterStatus === "success" && documentStatus === "success" && locationsStatus === "success") {
       if (documents !== undefined && barters !== undefined && locations !== undefined) {
@@ -53,7 +52,6 @@ function MenuComponent() {
           <h3>Cargando...</h3>
         </div>
         :
-
         <div className="component-menu">
           <Modal />
           <div className="top-bar-menu-component">
@@ -111,4 +109,4 @@ function MenuComponent() {
   )
 }
 
-export default MenuComponent 
+export default MenuComponent

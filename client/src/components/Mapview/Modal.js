@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { SettingContext } from "../../contexts/SettingContext";
-
-
 import { Link } from "react-router-dom";
+
 function Modal({ id }) {
 
   var localStore = JSON.parse(localStorage.getItem('state'));
-  const { modal, toggleModal, modalMessage, modalType, setMessage, setmodalType, contactId } = useContext(SettingContext);
-
+  const { modal, toggleModal, modalMessage, modalType, setMessage, setmodalType, contactId, setContactId } = useContext(SettingContext);
 
 
   const sendNumber = async (part) => {
@@ -76,12 +74,18 @@ function Modal({ id }) {
   function sendContact() {
     if (contactId) {
       sendNumber(contactId);
+      setTimeout(() => {
+        setContactId('')
+      }, 100);
     }
   }
 
   function sendDocument() {
     if (contactId) {
       sendDoc(contactId);
+      setTimeout(() => {
+        setContactId('')
+      }, 100);
     }
   }
 
@@ -97,7 +101,8 @@ function Modal({ id }) {
                   </Link><Link to="/menu/exchange" >  <div className="menu-modal-option" onClick={toggleModal}><h5>Intercambios</h5> <div className="arrow-gallery right" /></div>
                   </Link>
                   <Link to="/menu/library" >  <div className="menu-modal-option" onClick={toggleModal}><h5>Biblioteca Virtual</h5> <div className="arrow-gallery right" /></div>
-                  </Link> <Link to={`/map/${id}`} >  <div className="menu-modal-option" onClick={toggleModal} ><h5>Mi Huerta</h5> <div className="arrow-gallery right" /></div>
+                  </Link>
+                  <Link to={`/map/${id}`} >  <div className="menu-modal-option" onClick={toggleModal} ><h5>Mi Huerta</h5> <div className="arrow-gallery right" /></div>
                   </Link>
                   <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(4); }} style={{ borderBottom: "none" }}><h5>Conoce más sobre Sembrando Vida</h5> <div className="arrow-gallery right" /></div>
                 </div>
@@ -162,19 +167,7 @@ function Modal({ id }) {
                   <h5>*Si tienes alguna duda, comunícate con el grupo de soporte para pruebas de usuario</h5>
                 </div>
               )
-            case 8:
-              return (
-                <div className="menu-modal-container">
-                  {localStore._id !== id &&
-                    <div className="menu-modal-option" onClick={() => { setmodalType(1); setMessage(3); }}>Contactar<div className="arrow-gallery right" /></div>
-                  }
-                  <Link to="/map/aboutme/detail"><div className="menu-modal-option">Acerca de Mi<div className="arrow-gallery right" /></div></Link>
 
-                  <div className="menu-modal-option" style={{ textDecoration: "  line-through" }}>Intercambios<div className="arrow-gallery right" /></div>
-
-                  <div className="menu-modal-option" style={{ borderBottom: "none", textDecoration: "  line-through" }}>Documentos<div className="arrow-gallery right" /></div>
-                </div>
-              )
             case 9:
               return (
                 <div >

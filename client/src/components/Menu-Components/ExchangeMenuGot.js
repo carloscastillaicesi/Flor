@@ -32,7 +32,7 @@ function ExchangeMenuGot() {
         </Link>
 
       </div>
-      <a href="http://wa.link/loascd" target="_blank" rel="noopener noreferrer"><div className="option-button"><h4>Registar algo nuevo</h4></div></a>
+      <a href="http://wa.link/y15frm" target="_blank" rel="noopener noreferrer"><div className="option-button"><h4>Registar algo nuevo</h4></div></a>
     </div>
   )
 }
