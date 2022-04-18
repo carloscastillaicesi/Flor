@@ -9,7 +9,7 @@ const DocumentContextProvider = (props) => {
  const [documentStatus, setdocumentStatus] = useState();
 
  const fetchDocuments = async () => {
-  const res = await fetch("/map/documents", {
+  const res = await fetch("api/map/documents", {
    crossDomain: true
   })
 

@@ -9,7 +9,7 @@ const BarterContextProvider = (props) => {
  const [barterStatus, setBarterStatus] = useState();
 
  const fetchBarters = async () => {
-  const res = await fetch("/map/Barters", {
+  const res = await fetch("api/map/Barters", {
    crossDomain: true
   })
 
