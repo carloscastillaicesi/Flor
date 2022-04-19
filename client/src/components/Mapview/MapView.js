@@ -30,7 +30,7 @@ const MapView = () => {
   _id === '' && userData(localStore);
 
   const fetchLocations = async () => {
-    const res = await fetch(`/map/${_id === '' ? localStore._id : _id}`, {
+    const res = await fetch(`/api/map/${_id === '' ? localStore._id : _id}`, {
       crossDomain: true
     })
     return res.json();
