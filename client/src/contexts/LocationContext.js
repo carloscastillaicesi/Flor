@@ -9,7 +9,7 @@ const LocationContextProvider = (props) => {
  const [locationsStatus, setlocationsStatus] = useState();
 
  const fetchLocations = async () => {
-  const res = await fetch(`map/users`, {
+  const res = await fetch(`/api/map/users`, {
    crossDomain: true
   })
   return res.json();

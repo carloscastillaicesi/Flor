@@ -9,7 +9,7 @@ const UserInfoContextProvider = (props) => {
  const [userStatus, setuserStatus] = useState();
 
  const fetchUsers = async () => {
-  const res = await fetch("map/aboutme", {
+  const res = await fetch("/api/map/aboutme", {
    crossDomain: true
   })
   return res.json();
