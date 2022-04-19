@@ -12,7 +12,7 @@ const HomeUsers = () => {
   let { userid } = useParams();
 
   const fetchUser = async () => {
-    const res = await fetch(`/user/${userid}`, {
+    const res = await fetch(`/api/user/${userid}`, {
       crossDomain: true
     })
     return res.json();
